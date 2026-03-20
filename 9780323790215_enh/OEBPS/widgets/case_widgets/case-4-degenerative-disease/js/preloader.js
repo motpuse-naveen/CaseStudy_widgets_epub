@@ -1,0 +1,66 @@
+var imgPreloadArray = new Array("images/gray_dot_old.png",
+	"images/loading.gif",
+	"images/menu_btn.png",
+	"images/next_btn.png",
+	"images/prev_btn.png",
+	"images/table_btn.png",
+	"images/arrow.png",
+	"images/check_btn.png",
+	"images/checkbox.png",
+	"images/dot.png",
+	"images/cns410.jpg",
+	"images/cns411.jpg",
+	"images/cns412.jpg",
+	"images/cns420.jpg",
+	"images/cns421.jpg",
+	"images/cns422.jpg",
+	"images/cns423.jpg",
+	"images/cns424.jpg",
+	"images/cns430.jpg",
+	"images/cns431.jpg",
+	"images/cns432.jpg",
+	"images/cns433.jpg",
+	"images/cns434.jpg",
+	"images/cns435.jpg",
+	"images/cns436.jpg",
+	"images/cns437.jpg",
+	"images/cns438.jpg",
+	"images/cns440.jpg",
+	"images/cns441.jpg",
+	"images/cns442.jpg",
+	"images/cns450.jpg",
+	"images/cns451.jpg",
+	"images/cns452.jpg",
+	"images/cns460.jpg",
+	"images/cns461.jpg",
+	"images/cns462.jpg",
+	"images/cns470.jpg",
+	"images/cns471.jpg",
+	"images/cns472.jpg",
+	"images/cns480.jpg",
+	"images/cns481.jpg",
+	"images/cns482.jpg",
+	"images/cns483.jpg",
+	"images/cns484.jpg",
+	"images/cns490.jpg",
+	"images/cns491.jpg",
+	"images/cns4100.jpg",
+	"images/cns4101.jpg",
+	"images/cns4110.jpg",
+	"images/cns4111.jpg",
+	"images/cns4120.jpg",
+	"images/cns4121.jpg",
+	"images/figure-28-31.jpg",
+	"images/figure-28-36.jpg",
+	"images/gray_dot.png");
+var imagePreCount = 0;
+for(var pId = 0; pId < imgPreloadArray.length; pId++)
+{
+	var img = new Image();
+	img.onload = imagePreloaded;
+	img.src = imgPreloadArray[pId];
+}
+function imagePreloaded()
+{
+	imagePreCount++;
+}

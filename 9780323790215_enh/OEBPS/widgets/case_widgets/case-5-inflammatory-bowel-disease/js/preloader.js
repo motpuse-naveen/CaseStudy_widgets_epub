@@ -1,0 +1,66 @@
+var imgPreloadArray = new Array("images/gray_dot_old.png",
+	"images/loading.gif",
+	"images/menu_btn.png",
+	"images/next_btn.png",
+	"images/prev_btn.png",
+	"images/table_btn.png",
+	"images/arrow.png",
+	"images/check_btn.png",
+	"images/checkbox.png",
+	"images/dot.png",	
+	"images/gas510.jpg",
+"images/Figure 17-32.jpg",
+"images/Figure 17-33.jpg",
+"images/gas510.jpg",
+"images/gas511.jpg",
+"images/gas512.jpg",
+"images/gas520.jpg",
+"images/gas521.jpg",
+"images/gas522.jpg",
+"images/gas530.jpg",
+"images/gas531.jpg",
+"images/gas532.jpg",
+"images/gas533.jpg",
+"images/gas534.jpg",
+"images/gas540.jpg",
+"images/gas541.jpg",
+"images/gas542.jpg",
+"images/gas543.jpg",
+"images/gas550.jpg",
+"images/gas551.jpg",
+"images/gas552.jpg",
+"images/gas560.jpg",
+"images/gas561.jpg",
+"images/gas562.jpg",
+"images/gas563.jpg",
+"images/gas570.jpg",
+"images/gas571.jpg",
+"images/gas572.jpg",
+"images/gas573.jpg",
+"images/gas574.jpg",
+"images/gas575.jpg",
+"images/gas580.jpg",
+"images/gas581.jpg",
+"images/gas582.jpg",
+"images/gas590.jpg",
+"images/gas591.jpg",
+"images/ulcerativecolitis.webm",
+"images/ulcerativecolitis.mp4",
+"images/gas592.jpg",
+"images/gas5100.jpg",
+"images/gas5101.jpg",
+"images/gas5102.jpg",
+	"images/placeholder.jpg",
+	"images/placeholder.png",
+	"images/gray_dot.png");
+var imagePreCount = 0;
+for(var pId = 0; pId < imgPreloadArray.length; pId++)
+{
+	var img = new Image();
+	img.onload = imagePreloaded;
+	img.src = imgPreloadArray[pId];
+}
+function imagePreloaded()
+{
+	imagePreCount++;
+}

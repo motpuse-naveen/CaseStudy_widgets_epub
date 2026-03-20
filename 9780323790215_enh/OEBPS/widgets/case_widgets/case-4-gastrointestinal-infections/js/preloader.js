@@ -1,0 +1,67 @@
+var imgPreloadArray = new Array("images/gray_dot_old.png",
+	"images/loading.gif",
+	"images/menu_btn.png",
+	"images/next_btn.png",
+	"images/prev_btn.png",
+	"images/table_btn.png",
+	"images/arrow.png",
+	"images/check_btn.png",
+	"images/checkbox.png",
+	"images/dot.png",
+	"images/ind410.jpg",
+	"images/ind411.jpg",
+	"images/ind412.jpg",
+	"images/ind420.jpg",
+	"images/ind421.jpg",
+	"images/ind422.jpg",
+	"images/ind423.jpg",
+	"images/ind424.jpg",
+	"images/ind430.jpg",
+	"images/ind431.jpg",
+	"images/ind440.jpg",
+	"images/ind441.jpg",
+	"images/ind442.jpg",
+	"images/ind450.jpg",
+	"images/ind451.jpg",
+	"images/ind452.jpg",
+	"images/ind453.jpg",
+	"images/ind460.jpg",
+	"images/ind461.jpg",
+	"images/ind462.jpg",
+	"images/ind470.jpg",
+	"images/ind471.jpg",
+	"images/ind472.jpg",
+	"images/ind473.jpg",
+	"images/ind474.jpg",
+	"images/ind475.jpg",
+	"images/ind480.jpg",
+	"images/ind481.jpg",
+	"images/ind482.jpg",
+	"images/ind483.jpg",
+	"images/ind490.jpg",
+	"images/ind491.jpg",
+	"images/ind4100.jpg",
+	"images/ind4101.jpg",
+	"images/ind4102.jpg",
+	"images/ind4103.jpg",
+	"images/ind4104.jpg",
+	"images/ind4110.jpg",
+	"images/infk1140.jpg",
+	"images/giardiasis.webm",
+	"images/giardiasis.mp4",
+	"images/ind4111.jpg",
+	"images/Figure 17-27.jpg",
+	"images/placeholder.jpg",
+	"images/placeholder.png",
+	"images/gray_dot.png");
+var imagePreCount = 0;
+for(var pId = 0; pId < imgPreloadArray.length; pId++)
+{
+	var img = new Image();
+	img.onload = imagePreloaded;
+	img.src = imgPreloadArray[pId];
+}
+function imagePreloaded()
+{
+	imagePreCount++;
+}

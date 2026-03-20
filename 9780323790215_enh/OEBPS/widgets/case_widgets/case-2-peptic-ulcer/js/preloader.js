@@ -1,0 +1,67 @@
+var imgPreloadArray = new Array("images/gray_dot_old.png",
+	"images/loading.gif",
+	"images/menu_btn.png",
+	"images/next_btn.png",
+	"images/prev_btn.png",
+	"images/table_btn.png",
+	"images/arrow.png",
+	"images/check_btn.png",
+	"images/checkbox.png",
+	"images/dot.png",	
+	"images/gas210.jpg",
+	"images/gas211.jpg",
+	"images/gas220.jpg",
+	"images/gas221.jpg",
+	"images/gas230.jpg",
+	"images/gas231.jpg",
+	"images/gas232.jpg",
+	"images/gas240.jpg",
+	"images/gas241.jpg",
+	"images/gas242.jpg",
+	"images/gas243.jpg",
+	"images/gas250.jpg",
+	"images/gas251.jpg",
+	"images/gas252.jpg",
+	"images/gas253.jpg",
+	"images/gas260.jpg",
+	"images/gas261.jpg",
+	"images/gas262.jpg",
+	"images/gas270.jpg",
+	"images/gas271.jpg",
+	"images/gas272.jpg",
+	"images/gas280.jpg",
+	"images/gas281.jpg",
+	"images/gas282.jpg",
+	"images/gas290.jpg",
+	"images/gas291.jpg",
+	"images/gas2100.jpg",
+	"images/gas2101.jpg",
+	"images/gas2102.jpg",
+	"images/gas2110.jpg",
+	"images/gas2111.jpg",
+	"images/gas2120.jpg",
+	"images/gas2121.jpg",
+	"images/gas2130.jpg",
+	"images/gas2131.jpg",
+	"images/gas2140.jpg",
+	"images/gas2141.jpg",
+	"images/gas2142.jpg",
+	"images/gas2150.jpg",
+	"images/gas2151.jpg",
+	"images/gas2152.jpg",
+	"images/gas2160.jpg",
+	"images/gas2161.jpg",
+	"images/placeholder.jpg",
+	"images/placeholder.png",
+	"images/gray_dot.png");
+var imagePreCount = 0;
+for(var pId = 0; pId < imgPreloadArray.length; pId++)
+{
+	var img = new Image();
+	img.onload = imagePreloaded;
+	img.src = imgPreloadArray[pId];
+}
+function imagePreloaded()
+{
+	imagePreCount++;
+}

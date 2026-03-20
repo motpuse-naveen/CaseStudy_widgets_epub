@@ -1,0 +1,67 @@
+var imgPreloadArray = new Array("images/gray_dot_old.png",
+	"images/loading.gif",
+	"images/menu_btn.png",
+	"images/next_btn.png",
+	"images/prev_btn.png",
+	"images/table_btn.png",
+	"images/arrow.png",
+	"images/check_btn.png",
+	"images/checkbox.png",
+	"images/dot.png",
+	"images/figure-11-5.jpg",
+	"images/figure-11-8.jpg",
+	"images/cvd410.jpg",
+	"images/cvd411.jpg",
+	"images/cvd420.jpg",
+	"images/cvd421.jpg",
+	"images/cvd422.jpg",
+	"images/cvd423.jpg",
+	"images/cvd424.jpg",
+	"images/cvd425.jpg",
+	"images/cvd430.jpg",
+	"images/cvd431.jpg",
+	"images/cvd432.jpg",
+	"images/cvd433.jpg",
+	"images/cvd434.jpg",
+	"images/cvd440.jpg",
+	"images/cvd441.jpg",
+	"images/cvd442.jpg",
+	"images/cvd443.jpg",
+	"images/cvd450.jpg",
+	"images/cvd451.jpg",
+	"images/cvd452.jpg",
+	"images/cvd453.jpg",
+	"images/cvd460.jpg",
+	"images/cvd461.jpg",
+	"images/cvd470.jpg",
+	"images/cvd471.jpg",
+	"images/cvd472.jpg",
+	"images/cvd480.jpg",
+	"images/cvd481.jpg",
+	"images/cvd482.jpg",
+	"images/cvd483.jpg",
+	"images/cvd490.jpg",
+	"images/cvd491.jpg",
+	"images/cvd492.jpg",
+	"images/cvd4100.jpg",
+	"images/cvd4101.jpg",
+	"images/cvd4102.jpg",
+	"images/cvd4110.jpg",
+	"images/cvd4111.jpg",
+	"images/cvd4112.jpg",
+	"images/cvd4113.jpg",
+	"images/cvd4114.jpg",
+	"images/placeholder.jpg",
+	"images/placeholder.png",
+	"images/gray_dot.png");
+var imagePreCount = 0;
+for(var pId = 0; pId < imgPreloadArray.length; pId++)
+{
+	var img = new Image();
+	img.onload = imagePreloaded;
+	img.src = imgPreloadArray[pId];
+}
+function imagePreloaded()
+{
+	imagePreCount++;
+}

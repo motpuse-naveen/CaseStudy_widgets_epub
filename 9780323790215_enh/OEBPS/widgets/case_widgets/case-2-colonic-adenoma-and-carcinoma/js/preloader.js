@@ -1,0 +1,68 @@
+var imgPreloadArray = new Array("images/gray_dot_old.png",
+	"images/loading.gif",
+	"images/menu_btn.png",
+	"images/next_btn.png",
+	"images/prev_btn.png",
+	"images/table_btn.png",
+	"images/arrow.png",
+	"images/check_btn.png",
+	"images/checkbox.png",
+	"images/dot.png",
+	"images/image004.jpg",
+	"images/image014.jpg",
+	"images/image016.jpg",
+	"images/image018.jpg",
+	"images/image020.jpg",
+	"images/image022.jpg",
+	"images/image026.jpg",
+	"images/neo210.jpg",
+	"images/neo211.jpg",
+	"images/neo212.jpg",
+	"images/neo213.jpg",
+	"images/neo214.jpg",
+	"images/neo215.jpg",
+	"images/neo220.jpg",
+	"images/neo221.jpg",
+	"images/neo222.jpg",
+	"images/neo230.jpg",
+	"images/neo231.jpg",
+	"images/neo240.jpg",
+	"images/neo241.jpg",
+	"images/neo242.jpg",
+	"images/neo250.jpg",
+	"images/neo251.jpg",
+	"images/neo252.jpg",
+	"images/neo253.jpg",
+	"images/neo260.jpg",
+	"images/neo261.jpg",
+	"images/neo262.jpg",
+	"images/neo263.jpg",
+	"images/neo264.jpg",
+	"images/neo270.jpg",
+	"images/neo271.jpg",
+	"images/neo272.jpg",
+	"images/neo280.jpg",
+	"images/neo281.jpg",
+	"images/neo2100.jpg",
+	"images/neo2110.jpg",
+	"images/neo2120.jpg",
+	"images/neo2130.jpg",
+	"images/neo2131.jpg",
+	"images/neo2140.jpg",
+	"images/neo2150.jpg",
+	"images/neo2151.jpg",
+	"images/neo2152.jpg",
+	"images/placeholder.jpg",
+	"images/placeholder.png",
+	"images/gray_dot.png");
+var imagePreCount = 0;
+for(var pId = 0; pId < imgPreloadArray.length; pId++)
+{
+	var img = new Image();
+	img.onload = imagePreloaded;
+	img.src = imgPreloadArray[pId];
+}
+function imagePreloaded()
+{
+	imagePreCount++;
+}
