@@ -28,8 +28,8 @@
 
         $(".navigation").bind("click keyup", fnHandelNavigationEvents); 
 
-        $("#naviLeft").bind("click keyup",fnBack);
-        $("#naviRight").bind("click keyup",fnNext); 
+        $("#naviLeft").bind("click",fnBack);
+        $("#naviRight").bind("click",fnNext); 
 
         // menu/reference controls are semantic buttons; click covers keyboard activation
         $("#menuBtn").bind("click",menuBtnFn);
@@ -649,8 +649,6 @@ fnCheckNextBack(nSlideCounter);
         $(".topContent").show();
         $(".footer").show();
     }
-
-
 
    
 function set_tabindex(){
