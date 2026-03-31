@@ -18,7 +18,7 @@ function init(){
      for (var index = 1; index <=  ContentArray.length ; index++) {
          if(index == 1){ pageFirstSection = '';   }else{  pageFirstSection = 'pageFirstSection'; }
  
-        headerContent +='<div class="myPage '+pageFirstSection+'" id="pageFirstSection_'+index+'"><div class="para_ tabindex Cont_Que">'+ContentArray[index-1].question+'</div><div id="AnswerDiv_'+index+'" class="AnswerDiv" isSelected="false"><span class="tabindex show">Show answer</span></div><div class="textArea" id="textA'+index+'"><div id="wrap'+index+'" class="wrapper AnswerDiv_para"><div class="contentHolder tabindex Cont_Ans">'+ContentArray[index-1].answer+'</div><div id="scroller"></div></div></div></div>';
+        headerContent +='<div class="myPage '+pageFirstSection+'" id="pageFirstSection_'+index+'"><div class="para_ tabindex Cont_Que">'+ContentArray[index-1].question+'</div><button id="AnswerDiv_'+index+'" class="AnswerDiv" type="button" isSelected="false"><span class="tabindex show">Show answer</span></button><div class="textArea" id="textA'+index+'"><div id="wrap'+index+'" class="wrapper AnswerDiv_para"><div class="contentHolder tabindex Cont_Ans">'+ContentArray[index-1].answer+'</div><div id="scroller"></div></div></div></div>';
        
        }
 
@@ -42,7 +42,7 @@ function init(){
 
 	   init();
 
-		 $( ".AnswerDiv" ).unbind().bind("click keyup",AnswerDivFun);	
+		 $( ".AnswerDiv" ).unbind().bind("click",AnswerDivFun);	
      
 
 	   $(document).bind("keydown mousedown",enable_scorm);  // pankaj
@@ -82,9 +82,6 @@ function AnswerDivFun(e){
 console.log("");
 
 
-        if(e.type=="keyup" && e.keyCode !=13){
-                return  true;
-          }
       var parentId=$(this).parents('.midDiv').attr('id');
    
     console.log("parent",parentId);

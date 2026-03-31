@@ -661,7 +661,8 @@ set_tabindex();
         $(".tabindex").each(function(index){
             $(this).removeAttr("tabindex");
             if($(this).is(':visible')){
-                $(this).attr("tabindex",tab_index);
+                //Commented below line to avoid non-interactive element tabfocus.
+                //$(this).attr("tabindex",tab_index);
                 //console.log(this);
                 tab_index++;
             }
