@@ -766,6 +766,9 @@ background-position: 0 -50px;
   padding: 15px;
   width: 440px;
 }
+h1.mainTitle{
+  margin: 0;
+}
 
 .mainScreenTitle{
 
