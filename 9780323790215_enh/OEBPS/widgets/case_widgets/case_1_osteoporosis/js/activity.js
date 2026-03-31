@@ -31,8 +31,9 @@
         $("#naviLeft").bind("click keyup",fnBack);
         $("#naviRight").bind("click keyup",fnNext); 
 
-        $("#menuBtn").bind("click keyup",menuBtnFn);
-        $("#tableBtn").bind("click keyup",tableBtnFn);
+        // menu/reference controls are semantic buttons; click covers keyboard activation
+        $("#menuBtn").bind("click",menuBtnFn);
+        $("#tableBtn").bind("click",tableBtnFn);
 
 
         $('.item').bind("click keyup",fnClickRadioBox);
@@ -194,10 +195,12 @@ function menuBtnFn(ev,nSlideCounter){
         }
 
         $('#tableBtn').removeClass('tableBtnSelected');
+        $('#tableBtn').attr('aria-expanded', 'false');
         
             if($('.menupatch').css('display') == 'block'){
                     $('.menupatch').slideUp();  
                     $('#menuBtn').removeClass('menuBtnSelected');
+                    $('#menuBtn').attr('aria-expanded', 'false');
                     if (currScreenVisible != null)
                         $(currScreenVisible).show();
                     currScreenVisible = null;
@@ -222,6 +225,7 @@ function menuBtnFn(ev,nSlideCounter){
 
                     $('.menupatch').css("z-index","13");
                     $('#menuBtn').addClass('menuBtnSelected');
+                    $('#menuBtn').attr('aria-expanded', 'true');
                     $('.menupatch').slideDown({
                         complete: function(){
                             
@@ -301,13 +305,16 @@ console.log('tableBtnFn...')
             resetScrrenObjectsVisibility();
             $('.menupatch').hide();
             $('#menuBtn').removeClass('menuBtnSelected');
+            $('#menuBtn').attr('aria-expanded', 'false');
 
         }
         $('#tableBtn').removeClass('tableBtnSelected');
+        $('#tableBtn').attr('aria-expanded', 'false');
         
             if($('.tablepatch').css('display') != 'none'){
                     $('.tablepatch').slideUp();
                     $('#tableBtn').removeClass('tableBtnSelected');
+                    $('#tableBtn').attr('aria-expanded', 'false');
                     if (currScreenVisible1 != null)
                         $(currScreenVisible1).show();
                     currScreenVisible1 = null;
@@ -331,6 +338,7 @@ console.log('tableBtnFn...')
 
                     $('.tablepatch').css("z-index","13");
                     $('#tableBtn').addClass('tableBtnSelected');
+                    $('#tableBtn').attr('aria-expanded', 'true');
                     $('.tablepatch').slideDown({
                         complete: function(){
                             

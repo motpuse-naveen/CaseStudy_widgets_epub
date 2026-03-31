@@ -22,6 +22,17 @@
 select {
   display: block;
 }
+
+.native-select-hidden {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}
       
       .dropdown {
         background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%);
@@ -188,6 +199,11 @@ select {
          background-color: #015453 !important;
          /*outline: 1px solid;*/
       }
+
+.dropdown .option.activeOption {
+  background-color: #86ded4 !important;
+  color: #fff;
+}
       
       body {
         -moz-osx-font-smoothing: grayscale;

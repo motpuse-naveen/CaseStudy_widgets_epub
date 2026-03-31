@@ -38,15 +38,15 @@
             <div class="topContent">
 
                 <div class="topWrapperBox">
-                    <div id="menuBtn" class="menuBtn tabindex" aria-label="Menu">
+                    <button id="menuBtn" class="menuBtn tabindex" type="button" title="Menu" aria-label="Menu" aria-controls="menuPanel" aria-expanded="false" aria-haspopup="true">
                         <span>Menu</span>
-                    </div>
+                    </button>
                     <h1 class="mainTitle">
                         <span>Osteoporosis</span>
                     </h1>
-                    <div id="tableBtn" class="tableBtn tabindex" aria-label="Reference">
+                    <button id="tableBtn" class="tableBtn tabindex" type="button" title="Reference" aria-label="Reference" aria-controls="referencePanel" aria-expanded="false" aria-haspopup="true">
                         <span>Normal Reference Range Table</span>
-                    </div>
+                    </button>
                 </div>
 
                 <div id="pageContainer">
@@ -896,7 +896,7 @@
             </div>
             <div class="popupContainer"></div>
 
-            <div class="menupatch menupathScroll">
+            <div id="menuPanel" class="menupatch menupathScroll">
                 <ul class="menuList">
                     <li id="menu0" class="tabindex">i. Learning Objectives</li>
                     <li id="menu1" class="tabindex">ii. Resources</li>
@@ -925,12 +925,12 @@
                 <div class="bottomWhitePatch"></div>
             </div>
 
-            <div class="tablepatch">
+            <div id="referencePanel" class="tablepatch">
                 <div class="tableHeader">
 
                     <div class="tableTitle tabindex">Normal Reference Range Table</div>
 
-                    <span class="tabindex">Select:</span>
+                    <span id="tableDropdownLabel" class="tabindex">Select:</span>
                     <div id="tableDropdownID" class="tableDropdownList">
 
                     </div>
