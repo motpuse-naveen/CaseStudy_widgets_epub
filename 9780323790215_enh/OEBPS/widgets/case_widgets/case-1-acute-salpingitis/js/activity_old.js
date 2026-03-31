@@ -643,7 +643,6 @@ fnCheckNextBack(nSlideCounter);
     }
 
 
-
    
 function set_tabindex(){
         var tab_index=1;

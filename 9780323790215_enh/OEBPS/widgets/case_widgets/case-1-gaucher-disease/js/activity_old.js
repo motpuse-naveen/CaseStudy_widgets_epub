@@ -642,8 +642,6 @@ fnCheckNextBack(nSlideCounter);
         $(".footer").show();
     }
 
-
-
    
 function set_tabindex(){
         var tab_index=1;

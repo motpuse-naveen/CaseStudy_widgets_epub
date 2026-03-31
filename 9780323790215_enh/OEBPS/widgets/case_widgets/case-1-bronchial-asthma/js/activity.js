@@ -650,10 +650,10 @@ fnCheckNextBack(nSlideCounter);
         $(".footer").show();
     }
 
-
+function set_tabindex(){}
 
    
-function set_tabindex(){
+function set_tabindex_v2(){
         var tab_index=1;
         $(".tabindex").each(function(index){
             $(this).removeAttr("tabindex");
