@@ -36,11 +36,11 @@
 
         $(".navigation").bind("click keyup", fnHandelNavigationEvents); 
 
-        $("#naviLeft").bind("click keyup",fnBack);
-        $("#naviRight").bind("click keyup",fnNext); 
+        $("#naviLeft").bind("click",fnBack);
+        $("#naviRight").bind("click",fnNext); 
 
-        $("#menuBtn").bind("click keyup",menuBtnFn);
-        $("#tableBtn").bind("click keyup",tableBtnFn);
+        $("#menuBtn").bind("click",menuBtnFn);
+        $("#tableBtn").bind("click",tableBtnFn);
 
 
         $('.item').bind("click keyup",fnClickRadioBox);

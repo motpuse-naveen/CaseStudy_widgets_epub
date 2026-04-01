@@ -616,6 +616,18 @@ li.jp-unmute,
   width: 50px;
 }
 
+#menuBtn,
+#tableBtn {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+#naviLeft,
+#naviRight {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
 .menuBtnSelected{
    background-image: url("../images/menu_btn.png");
     background-position: 0 -100px;
@@ -1395,8 +1407,10 @@ top: 2px;
 }
 
 
-.tabindex.ontab:focus {
-  outline:2px solid #ACB0B3;
+.tabindex.ontab:focus,
+button:focus-visible{
+  outline:2px solid #015453;
+  outline-offset:-2px;
 }
 
 .imgHold1{
