@@ -25,7 +25,7 @@ $(document).ready(function()
     var tableData8 = testCasesdata[0].caseData8; // get case study
     var tableData9 = testCasesdata[0].caseData9; // get case study
     // drop down
-    dropdownSelect = '<select id="dropdown_1" class="dropdownList tabindex noIndx">'
+    dropdownSelect = '<select id="dropdown_1" class="dropdownList noIndx">'
     for (var j = 0; j < quesList[0].quesDropOptions.length; j++)
     {
         var disabledSel = "disabled";
@@ -118,21 +118,15 @@ $(document).ready(function()
     $("#addTable8").append(tableRows9);
     // $("#addTable2").append(tableRows);
     create_custom_dropdowns();
-    $('#dropdown_1').hide();
+    $('#dropdown_1').addClass('native-select-hidden').attr('aria-hidden', 'true').attr('tabindex', '-1');
     var rowIndex = 0;
     $('.tablepatch .list li').each(function()
     {
         $(this).attr('data-id', rowIndex);
         rowIndex++;
     });
-    // new change
-    $(document).on('click keyup', '.dropdown .option', function(ev)
+    function updateReferenceTable(data_id)
     {
-        if (ev.type == "keyup" && ev.keyCode != 13)
-        {
-            return true;
-        }
-        var data_id = $(this).attr('data-id');
         $('.testContainer').hide();
         $('#testListId' + data_id).show();
         if ($('#testListId' + data_id).height() < $('#addTable' + data_id + ' table').height())
@@ -144,6 +138,23 @@ $(document).ready(function()
         {
             $(".nano-pane").hide();
         }
+    }
+
+    // click selection from pointer interaction on the custom list
+    $(document).on('click', '.dropdown .option', function()
+    {
+        updateReferenceTable($(this).attr('data-id'));
+    });
+
+    // change selection from keyboard interaction through the combobox logic
+    $(document).on('change', '#dropdown_1', function()
+    {
+        var selectedIndex = this.selectedIndex;
+        if (selectedIndex < 0)
+        {
+            return;
+        }
+        updateReferenceTable(selectedIndex);
     });
     $('#addTable5  .nano-pane').css("display", "none !important");
     // $("#addTable2").append(tableRows);

@@ -650,16 +650,13 @@ fnCheckNextBack(nSlideCounter);
         $(".footer").show();
     }
 
-function set_tabindex(){}
-
-   
-function set_tabindex_v2(){
+function set_tabindex(){
         var tab_index=1;
+        var interactiveSelector = 'button, [href], input, select, textarea, [role="button"], [role="combobox"], [role="option"], .menuList li, .item, .dropdown, .dropdown .option';
         $(".tabindex").each(function(index){
             $(this).removeAttr("tabindex");
-            if($(this).is(':visible')){
+            if($(this).is(':visible') && $(this).is(interactiveSelector)){
                 $(this).attr("tabindex",tab_index);
-                //console.log(this);
                 tab_index++;
             }
         });

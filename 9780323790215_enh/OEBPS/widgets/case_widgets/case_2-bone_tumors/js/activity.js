@@ -656,18 +656,17 @@ set_tabindex();
 
 
    
-    function set_tabindex(){
+function set_tabindex(){
         var tab_index=1;
+        var interactiveSelector = 'button, [href], input, select, textarea, [role="button"], [role="combobox"], [role="option"], .menuList li, .item, .dropdown, .dropdown .option';
         $(".tabindex").each(function(index){
             $(this).removeAttr("tabindex");
-            if($(this).is(':visible')){
-                //Commented below line to avoid non-interactive element tabfocus.
-                //$(this).attr("tabindex",tab_index);
-                //console.log(this);
+            if($(this).is(':visible') && $(this).is(interactiveSelector)){
+                $(this).attr("tabindex",tab_index);
                 tab_index++;
             }
         });
-    }
+   }
 
  })(player1 = player1 || {})
  var player1
