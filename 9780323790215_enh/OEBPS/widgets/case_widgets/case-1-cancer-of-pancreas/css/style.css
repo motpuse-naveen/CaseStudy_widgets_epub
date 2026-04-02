@@ -52,6 +52,30 @@ body {
   margin: 5px auto;
   opacity: 0.5;
 }*/
+button.imagePopup {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: #0066cc;              /* link color */
+  text-decoration: underline;
+  font: inherit;               /* keep surrounding text style */
+  cursor: pointer;
+  display: inline;             /* behave like inline text */
+}
+button.imagePopup.alignleft{
+  text-align: left;
+}
+
+button.imagePopup:hover {
+  color: #004a99;
+}
+
+button.imagePopup:focus-visible {
+  outline: 2px solid #004a99;  /* accessible keyboard focus */
+  outline-offset: 2px;
+}
+
 .popupimage{
     display: none;
     border: 1px solid;
@@ -60,9 +84,22 @@ body {
     top: 370px;
     left: 15%;
     text-align: center;
-    z-index: 10;
+    z-index: 10001 !important;
     background: white;
 }
+.imagePopupOverlay{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.45;
+    z-index: 10000 !important;
+    pointer-events: auto;
+}
+
 #popupimg1{
   top: 112px;
 }
@@ -1502,8 +1539,7 @@ button:focus-visible{
   height: 433px !important;
 }
 
-.midDiv > div:first-child,
-.midDiv > h2:first-child {
+.midDiv > h2:first-of-type {
   padding-bottom: 10px;
   padding-top: 15px;
   margin:0;

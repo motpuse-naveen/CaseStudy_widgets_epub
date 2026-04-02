@@ -1370,8 +1370,7 @@ button:focus-visible{
   height: 433px !important;
 }
 
-.midDiv > div:first-child,
-.midDiv > h2:first-child {
+.midDiv > h2:first-of-type {
   padding-bottom: 10px;
   padding-top: 15px;
   margin:0;

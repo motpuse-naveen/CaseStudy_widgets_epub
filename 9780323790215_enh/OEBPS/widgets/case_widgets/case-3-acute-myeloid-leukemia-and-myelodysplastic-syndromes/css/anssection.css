@@ -79,6 +79,7 @@ body
 }
 .AnswerDiv {
   background: #02aaa7 none repeat scroll 0 0;
+  border: 0;
   border-radius: 3px;
   color: #ffffff;
   float: right;
@@ -89,6 +90,10 @@ body
   right: 15px;
   top: 11px;
   width: 97px;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
 .AnswerDiv:hover {
@@ -149,7 +154,7 @@ body
   bottom: 48px;
   position: relative;
   top: 0;
-  z-index: 1;
+  /*z-index: 1;*/
 }
 #scroller {
     position: absolute;

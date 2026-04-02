@@ -22,6 +22,7 @@
         $(".imagePopup").bind('click',showImagePopup);
         $(".textPopup").bind('click',showTextPopup);
         $(".closeimgpopup").bind('click',hideImagePopup);
+        $(".imagePopupOverlay").bind('click',hideAllImagePopups);
         $(".closetextpopup").bind('click',hideTextPopup);
 
         $('.midDiv').each(function(){
@@ -61,13 +62,20 @@
     });
 
 function showImagePopup(ev){
+    ev.preventDefault();
+    var $currentMidDiv = $(this).closest('.midDiv');
+    var $overlay;
+    if (!$currentMidDiv.length) {
+        $currentMidDiv = $('.midDiv:visible').first();
+    }
+    $overlay = $currentMidDiv.find('.imagePopupOverlay').first();
     console.log("--",$(this).attr('data-id'))
-    if( $(this).attr('data-id')== "popupimg2"){//addSB
+    hideAllImagePopups();
+    if( $(this).attr('data-id')== "popupimg2"){ //addSB
         console.log("-=-")
-
-         // $("#textA12").css("height","auto");
         $("#textA12").css("height","400px")
     }
+    $overlay.show();
     $('#'+$(this).attr('data-id')).show();
 
 }
@@ -75,7 +83,13 @@ function hideImagePopup (ev) {
     if($(this).parent().attr("id") == "popupimg2"){
         $("#textA12").css("height","auto");//addSB
     }
-    $(this).parent().hide();    
+    $(this).parent().hide();
+    $(this).closest('.midDiv').find('.imagePopupOverlay').hide();
+}
+function hideAllImagePopups() {
+    $(".popupimage").hide();
+    $(".imagePopupOverlay").hide();
+    $("#textA12").css("height","auto");
 }
 function showTextPopup(ev){
     console.log("--",$(this).attr('data-id'))

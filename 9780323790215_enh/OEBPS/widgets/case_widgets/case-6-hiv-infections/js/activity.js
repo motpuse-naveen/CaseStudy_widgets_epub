@@ -62,12 +62,30 @@
     });
 
 function showImagePopup(ev){
-    console.log($(this).attr('data-id'))
+    ev.preventDefault();
+    var $currentMidDiv = $(this).closest('.midDiv');
+    var $overlay;
+    if (!$currentMidDiv.length) {
+        $currentMidDiv = $('.midDiv:visible').first();
+    }
+    $overlay = $currentMidDiv.find('.imagePopupOverlay').first();
+    console.log("--",$(this).attr('data-id'))
+    hideAllImagePopups();
+    if( $(this).attr('data-id')== "popupimg2"){ //addSB
+        console.log("-=-")
+        $("#textA12").css("height","400px")
+    }
+    $overlay.show();
     $('#'+$(this).attr('data-id')).show();
+
 }
 
 function hideImagePopup (ev) {
-    $(this).parent().hide();    
+    if($(this).parent().attr("id") == "popupimg2"){
+        $("#textA12").css("height","auto");//addSB
+    }
+    $(this).parent().hide();
+    $(this).closest('.midDiv').find('.imagePopupOverlay').hide();
 }
 
 // ####### Amol ######################
