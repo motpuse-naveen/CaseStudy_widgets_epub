@@ -59,12 +59,45 @@
     });
 
 function showImagePopup(ev){
-    console.log($(this).attr('data-id'))
-    $('#'+$(this).attr('data-id')).show();
+    ev.preventDefault();
+    var $currentMidDiv = $(this).closest('.midDiv');
+    if (!$currentMidDiv.length) {
+        $currentMidDiv = $('.midDiv:visible').first();
+    }
+    var $overlay = $currentMidDiv.find('.imagePopupOverlay').first();
+    var popupId = $(this).attr('data-id');
+    hideAllImagePopups(true);
+    if( popupId == "popupimg2"){
+        $("#textA12").css("height","400px")
+    }
+    if ($overlay.length) {
+        $overlay.show();
+    }
+    var $popup = $('#'+popupId);
+    $popup.show();
+    if (window.CaseWidgetImageModal && window.CaseWidgetImageModal.afterImagePopupShown) {
+        window.CaseWidgetImageModal.afterImagePopupShown(this, $popup[0], $overlay.length ? $overlay[0] : null);
+    }
 }
 
 function hideImagePopup (ev) {
-    $(this).parent().hide();    
+    if($(this).parent().attr("id") == "popupimg2"){
+        $("#textA12").css("height","auto");//addSB
+    }
+    if (window.CaseWidgetImageModal && window.CaseWidgetImageModal.onImagePopupsHidden) {
+        window.CaseWidgetImageModal.onImagePopupsHidden(false);
+    }
+    $(this).parent().hide();
+    $(this).closest('.midDiv').find('.imagePopupOverlay').hide();
+}
+
+function hideAllImagePopups(skipRestoreFocus){
+    if (window.CaseWidgetImageModal && window.CaseWidgetImageModal.onImagePopupsHidden) {
+        window.CaseWidgetImageModal.onImagePopupsHidden(!!skipRestoreFocus);
+    }
+    $(".popupimage").hide();
+    $(".imagePopupOverlay").hide();
+    $("#textA12").css("height","auto");
 }
 
 // ####### Amol ######################
@@ -623,24 +656,20 @@ fnCheckNextBack(nSlideCounter);
 
      function EnableLeftArrow(){
         $("#naviLeft").removeClass("leftArrowDisable").addClass("leftArrowEnable").css({"pointer-event":"auto", "cursor":"pointer"});
-        $('#naviLeft').addClass('tabindex');
         $('#naviLeft span').show();
 
     }
     function DisableLeftArrow(){
         $("#naviLeft").removeClass("leftArrowEnable").addClass("leftArrowDisable").css({"pointer-event":"none", "cursor":"default"});
-        $('#naviLeft').removeClass('tabindex');
         $('#naviLeft span').hide();
 
     }
      function EnableRightArrow(){
         $("#naviRight").removeClass("rightArrowDisable").addClass("rightArrowEnable").css({"pointer-event":"auto", "cursor":"pointer"});
-        $('#naviRight').addClass('tabindex');
         $('#naviRight span').show();
     }
     function DisableRightArrow(){
         $("#naviRight").removeClass("rightArrowEnable").addClass("rightArrowDisable").css({"pointer-event":"none", "cursor":"default"});
-       $('#naviRight').removeClass('tabindex');
        $('#naviRight span').hide();
     }
     function fnBegin(){

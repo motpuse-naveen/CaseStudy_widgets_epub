@@ -163,3 +163,206 @@ setTimeout(function () {
 	});
 }, 1000);
 //End
+
+/*** Case study widgets: accessible image popup (modal dialog) ***/
+(function () {
+	var activePopup = null;
+	var activeOverlay = null;
+	var activeTrigger = null;
+	var dialogTabindexSet = false;
+	var listenersAttached = false;
+	var inertEls = [];
+
+	function toElement(trigger) {
+		if (!trigger) return null;
+		if (trigger.nodeType === 1) return trigger;
+		if (typeof window.jQuery !== "undefined" && trigger && trigger.jquery) return trigger[0];
+		return null;
+	}
+
+	function getDialogTitle(trigger) {
+		var el = toElement(trigger);
+		if (!el) return "Image dialog";
+		var al = el.getAttribute && el.getAttribute("aria-label");
+		if (al && al.replace(/\s/g, "")) return al.replace(/^\s+|\s+$/g, "");
+		var t = (el.textContent || "").replace(/\s+/g, " ").replace(/^\s+|\s+$/g, "");
+		return t || "Image dialog";
+	}
+
+	function focusableIn(container) {
+		if (!container) return [];
+		var sel = "a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex=\"-1\"])";
+		var list = Array.prototype.slice.call(container.querySelectorAll(sel));
+		return list.filter(function (el) {
+			var st = window.getComputedStyle(el);
+			if (st.display === "none" || st.visibility === "hidden") return false;
+			return true;
+		});
+	}
+
+	function applyInert() {
+		var selectors = [".topWrapperBox", "#naviLeft", "#naviRight", ".footer", ".menupatch", ".tablepatch"];
+		selectors.forEach(function (sel) {
+			var el = document.querySelector(sel);
+			if (el && el.getAttribute("inert") == null) {
+				el.setAttribute("inert", "");
+				inertEls.push(el);
+			}
+		});
+	}
+
+	function removeInert() {
+		inertEls.forEach(function (el) {
+			try {
+				el.removeAttribute("inert");
+			} catch (e) {}
+		});
+		inertEls = [];
+	}
+
+	function closeViaCloseButton() {
+		if (typeof window.jQuery !== "undefined") {
+			var $p = window.jQuery(".popupimage:visible").first();
+			if ($p.length) {
+				var $c = $p.find(".closeimgpopup").first();
+				if ($c.length) {
+					$c.trigger("click");
+					return;
+				}
+			}
+		}
+		if (activePopup) {
+			var b = activePopup.querySelector(".closeimgpopup");
+			if (b) b.click();
+		}
+	}
+
+	function onKeydown(e) {
+		if (!activePopup) return;
+		var key = e.key || e.keyCode;
+		if (e.key === "Escape" || e.keyCode === 27) {
+			e.preventDefault();
+			closeViaCloseButton();
+			return;
+		}
+		if (e.key !== "Tab" && e.keyCode !== 9) return;
+		var nodes = focusableIn(activePopup);
+		if (nodes.length === 0) return;
+		var first = nodes[0];
+		var last = nodes[nodes.length - 1];
+		if (e.shiftKey) {
+			if (document.activeElement === first) {
+				e.preventDefault();
+				last.focus();
+			}
+		} else {
+			if (document.activeElement === last) {
+				e.preventDefault();
+				first.focus();
+			}
+		}
+	}
+
+	function onFocusIn(e) {
+		if (!activePopup) return;
+		var t = e.target;
+		if (activePopup.contains(t)) return;
+		if (t && t.classList && t.classList.contains("imagePopupOverlay")) return;
+		var nodes = focusableIn(activePopup);
+		if (!nodes.length) return;
+		e.stopImmediatePropagation();
+		e.preventDefault();
+		setTimeout(function () {
+			try {
+				nodes[0].focus();
+			} catch (err) {}
+		}, 0);
+	}
+
+	function teardown(restoreFocus) {
+		if (listenersAttached) {
+			document.removeEventListener("keydown", onKeydown, true);
+			document.removeEventListener("focusin", onFocusIn, true);
+			listenersAttached = false;
+		}
+		removeInert();
+		activeOverlay = null;
+		if (activePopup) {
+			if (dialogTabindexSet) {
+				activePopup.removeAttribute("tabindex");
+				dialogTabindexSet = false;
+			}
+			activePopup.removeAttribute("role");
+			activePopup.removeAttribute("aria-modal");
+			activePopup.removeAttribute("aria-label");
+			activePopup.removeAttribute("aria-labelledby");
+			activePopup.setAttribute("aria-hidden", "true");
+		}
+		if (activeTrigger) {
+			try {
+				activeTrigger.setAttribute("aria-expanded", "false");
+			} catch (e3) {}
+		}
+		var toFocus = activeTrigger;
+		activePopup = null;
+		activeTrigger = null;
+		if (restoreFocus && toFocus && typeof toFocus.focus === "function") {
+			try {
+				toFocus.focus();
+			} catch (e4) {}
+		}
+	}
+
+	window.CaseWidgetImageModal = {
+		afterImagePopupShown: function (trigger, popup, overlay) {
+			var trig = toElement(trigger);
+			if (!popup) return;
+			teardown(false);
+			activePopup = popup;
+			activeTrigger = trig;
+			activeOverlay = overlay || null;
+			var title = getDialogTitle(trig);
+			popup.setAttribute("role", "dialog");
+			popup.setAttribute("aria-modal", "true");
+			popup.setAttribute("aria-label", title);
+			popup.removeAttribute("aria-hidden");
+			if (trig) {
+				try {
+					trig.setAttribute("aria-expanded", "true");
+				} catch (e5) {}
+			}
+			if (activeOverlay) {
+				activeOverlay.setAttribute("aria-hidden", "true");
+			}
+			var closeBtn = popup.querySelector(".closeimgpopup");
+			if (closeBtn) {
+				if (!closeBtn.getAttribute("aria-label")) closeBtn.setAttribute("aria-label", "Close");
+				if (!closeBtn.getAttribute("title")) closeBtn.setAttribute("title", "close");
+				if (!closeBtn.getAttribute("type")) closeBtn.setAttribute("type", "button");
+			}
+			applyInert();
+			document.addEventListener("keydown", onKeydown, true);
+			document.addEventListener("focusin", onFocusIn, true);
+			listenersAttached = true;
+			var nodes = focusableIn(popup);
+			if (nodes.length) {
+				setTimeout(function () {
+					try {
+						nodes[0].focus();
+					} catch (e7) {}
+				}, 0);
+			} else {
+				popup.setAttribute("tabindex", "-1");
+				dialogTabindexSet = true;
+				setTimeout(function () {
+					try {
+						popup.focus();
+					} catch (e8) {}
+				}, 0);
+			}
+		},
+		onImagePopupsHidden: function (skipRestoreFocus) {
+			teardown(!skipRestoreFocus);
+		}
+	};
+})();

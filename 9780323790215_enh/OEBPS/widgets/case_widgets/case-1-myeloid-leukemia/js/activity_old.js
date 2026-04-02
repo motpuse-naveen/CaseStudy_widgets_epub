@@ -615,24 +615,20 @@ fnCheckNextBack(nSlideCounter);
 
      function EnableLeftArrow(){
         $("#naviLeft").removeClass("leftArrowDisable").addClass("leftArrowEnable").css({"pointer-event":"auto", "cursor":"pointer"});
-        $('#naviLeft').addClass('tabindex');
         $('#naviLeft span').show();
 
     }
     function DisableLeftArrow(){
         $("#naviLeft").removeClass("leftArrowEnable").addClass("leftArrowDisable").css({"pointer-event":"none", "cursor":"default"});
-        $('#naviLeft').removeClass('tabindex');
         $('#naviLeft span').hide();
 
     }
      function EnableRightArrow(){
         $("#naviRight").removeClass("rightArrowDisable").addClass("rightArrowEnable").css({"pointer-event":"auto", "cursor":"pointer"});
-        $('#naviRight').addClass('tabindex');
         $('#naviRight span').show();
     }
     function DisableRightArrow(){
         $("#naviRight").removeClass("rightArrowEnable").addClass("rightArrowDisable").css({"pointer-event":"none", "cursor":"default"});
-       $('#naviRight').removeClass('tabindex');
        $('#naviRight span').hide();
     }
     function fnBegin(){
