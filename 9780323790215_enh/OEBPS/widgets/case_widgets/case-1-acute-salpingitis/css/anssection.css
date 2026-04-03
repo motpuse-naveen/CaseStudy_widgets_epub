@@ -74,7 +74,7 @@ body
   padding-bottom: 10px;
   padding-top: 10px;
   position: relative;
-  width: 400px;
+  width: 375px;
 }
 #pageFirstSection {
   position: relative;
@@ -88,14 +88,15 @@ body
   font-family: "SourceSansPro-Bold";
   font-size: 14px;
   height: 26px;
-  position: relative;
+  /*position: relative;
   right: 15px;
-  top: 11px;
-  width: 97px;
+  top: 11px;*/
+  min-width: 97px;
   appearance: none;
   margin: 0;
   padding: 0;
-  text-align: left;
+  text-align: center;
+  margin: 10px;
 }
 
 .AnswerDiv:hover {
@@ -127,9 +128,10 @@ body
     cursor: pointer;
 }
 .AnswerDiv span {
-  left: 7px;
+  /*left: 7px;
   position: absolute;
-  top: 3px;
+  top: 3px;*/
+  padding: 0px 10px;
 }
 .bgArrow {
   background: rgba(0, 0, 0, 0) url("../images/arrow.png") repeat scroll 0 20px;
