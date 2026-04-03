@@ -799,9 +799,9 @@ h1.mainTitle{
 
 .numbering {
   background: #02aaa7 none repeat scroll 0 0;
-  border: 1px solid #02aaa7;
+  border: 1px solid #018481;
   border-radius: 15px;
-  color: #ffffff;
+  color: #000000;
   float: left;
   font-family: "SourceSansPro-Bold";
   font-size: 14px;
@@ -847,7 +847,7 @@ h1.mainTitle{
 }
 
 .menupatch > ul > li:hover{
-  color: #fff;
+  color: #000000;
   background: #86d6d4;
   cursor: pointer;
 }
@@ -920,8 +920,8 @@ h1.mainTitle{
 }
 .checkList {
   background: #02aaa7 none repeat scroll 0 0;
-  border: 1px solid;
-  color: #ffffff;
+  border: 1px solid #018481;
+  color: #000000;
   margin-bottom: 3px;
   min-height: 31px;
   overflow: hidden;
@@ -933,6 +933,7 @@ h1.mainTitle{
 
 .selectedRadioBtn{
   background: #015453;
+  color: #FFFFFF;
 }
 
 .selectedRadioBtn:hover{
