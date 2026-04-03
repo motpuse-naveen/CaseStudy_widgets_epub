@@ -73,6 +73,10 @@ function fnClickRadioBox(ev){
 
     var currId = $(this).children().attr('data-id');    
     var parentId=$(this).parents('.midDiv').attr('id');
+    var $graph = $(this).closest('.imageBoxHolder').find('.graphContainer').first();
+    if (!$graph.length && parentId) {
+        $graph = $('#' + parentId).find('.graphContainer').first();
+    }
 
 var currentCheckbox = $(this).find(".rb");
 
@@ -108,10 +112,13 @@ var currentCheckbox = $(this).find(".rb");
             indexId = id.substr(id.indexOf("_") + 1);
 
             console.log(indexId);
-            $('.imgBlock').hide();
-
-            //$('#' + parentId + ' .graph_'+indexId).css('display','none');
-            $('.imageShow' + indexId).css('display','none');      
+            if ($graph.length) {
+                $graph.find('img.containerImg').hide();
+                $graph.find('img.containerImg:first').css('display','block');
+            } else {
+                $('.imgBlock').hide();
+                $('.imageShow' + indexId).css('display','none');
+            }
     }else{
 
         console.log('hii i m in else');
@@ -124,10 +131,13 @@ var currentCheckbox = $(this).find(".rb");
 
             console.log(indexId);
             console.log('#'+parentId);
-            $('.imgBlock').hide();
-
-            //$('#' + parentId + ' .graph_'+indexId).css('display','block');
-            $('.imageShow' + indexId).css('display','block');        
+            if ($graph.length) {
+                $graph.find('img.containerImg').hide();
+                $graph.find('.imageShow' + indexId).css('display','block');
+            } else {
+                $('.imgBlock').hide();
+                $('.imageShow' + indexId).css('display','block');
+            }
     }
 
 
