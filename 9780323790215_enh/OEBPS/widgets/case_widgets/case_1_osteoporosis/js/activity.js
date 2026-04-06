@@ -265,6 +265,7 @@ function menuBtnFn(ev,nSlideCounter){
         }*/
 
     set_tabindex();
+    
 }
 
 function resetScrrenObjectsVisibility()
