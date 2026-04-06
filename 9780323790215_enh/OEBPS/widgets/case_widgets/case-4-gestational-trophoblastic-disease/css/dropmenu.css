@@ -185,7 +185,7 @@ select {
 }
       .dropdown .option:hover, .dropdown .option:focus {
         background-color: #86ded4 !important;
-        color: #fff;
+        color: #000000;
       }
       
       .dropdown .option.selected {
