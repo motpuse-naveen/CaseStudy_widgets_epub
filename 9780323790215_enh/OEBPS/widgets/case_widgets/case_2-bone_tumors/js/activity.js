@@ -441,7 +441,7 @@ set_tabindex();
         // hide answer div
         $('.AnswerDiv > span').empty().text('Show answer');
         $('.textArea').hide().attr('aria-hidden', 'true');//new added
-$('.AnswerDiv').attr('aria-expanded', 'false'); //new added
+        $('.AnswerDiv').attr('aria-expanded', 'false'); //new added
         if (nSlideCounter < 0) {
           $(".topContent").hide();
           $(".footer").hide();
