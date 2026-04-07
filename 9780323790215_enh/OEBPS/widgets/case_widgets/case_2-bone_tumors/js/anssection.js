@@ -104,6 +104,8 @@ console.log("");
 
            $(this).parent().find('.textArea').slideUp();
            $(this).find('span').text("Show answer");
+            $(this).attr('aria-expanded', 'false'); //new addedd
+    $(this).parent().find('.textArea').attr('hidden', 'hidden').attr('aria-hidden', 'true'); //new addedd
       
 
       }else{
@@ -119,6 +121,9 @@ console.log("");
 
 
         $(this).attr('isSelected','true')
+        $(this).attr('aria-expanded', 'true'); // new added
+$(this).parent().find('.textArea').removeAttr('hidden'); // new added
+$(this).parent().find('.textArea').attr('aria-hidden', 'false') // new added
         $(this).parent().find('.textArea').slideDown("fast", function() {
           // Animation complete.
           // $(".nano").nanoScroller({ scroll: 'bottom' });
