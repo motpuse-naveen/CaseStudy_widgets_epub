@@ -386,20 +386,18 @@ img {
   height: 50px;
   margin: 0;
   position: absolute;
-  top: 464px;
+  top: 0px;
+  left: 0px;
   width: 50px;
   z-index: 12;
 }
 .leftArrowDisable {
-/*  background-image: url("../images/prev_btn.png");
-  background-position: 0px 0;
+  background-image: url("../images/prev_btn.png");
+  background-position: 0px -50px;
   background-repeat: no-repeat;
   opacity: 0.25;
   pointer-events: none;
-  background-color: #02aaa7;*/
-  background: #02aaa7;
-  pointer-events: none;
-
+  background-color: #02aaa7;
 }
 .leftArrowEnable {
   background-image: url("../images/prev_btn.png");
@@ -417,23 +415,23 @@ img {
   text-align: center;
 }
 #naviRight {
-  float: right;
+  /*float: right;*/
   height: 50px;
   margin: 0;
-  position: relative;
-  /*top: -1px;*/
+  position: absolute;
+  top: 0px;
+  right:0px;
   width: 50px;
   z-index: 12;
 }
 
 .rightArrowDisable {
-  /*background-image: url("../images/next_btn.png");*/
-  /*background-position: 0px -50px;*/
-  /*background-repeat: no-repeat;*/
-  /*opacity: 0.25;*/
-  background: #02aaa7;
+  background-image: url("../images/next_btn.png");
+  background-position: 0px -50px;
+  background-repeat: no-repeat;
+  opacity: 0.25;
+  background-color: #02aaa7;
   pointer-events: none;
-
 }
 .rightArrowEnable {
   background-image: url("../images/next_btn.png");

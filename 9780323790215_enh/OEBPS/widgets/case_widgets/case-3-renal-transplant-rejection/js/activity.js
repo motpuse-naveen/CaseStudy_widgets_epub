@@ -649,28 +649,32 @@
       .addClass("leftArrowEnable")
       .css({ "pointer-event": "auto", cursor: "pointer" });
     $("#naviLeft span").show();
-  }
+      $("#naviLeft").attr("aria-disabled", "false");
+}
   function DisableLeftArrow() {
     $("#naviLeft")
       .removeClass("leftArrowEnable")
       .addClass("leftArrowDisable")
       .css({ "pointer-event": "none", cursor: "default" });
     $("#naviLeft span").hide();
-  }
+      $("#naviLeft").attr("aria-disabled", "true");
+}
   function EnableRightArrow() {
     $("#naviRight")
       .removeClass("rightArrowDisable")
       .addClass("rightArrowEnable")
       .css({ "pointer-event": "auto", cursor: "pointer" });
     $("#naviRight span").show();
-  }
+      $("#naviRight").attr("aria-disabled", "false");
+}
   function DisableRightArrow() {
     $("#naviRight")
       .removeClass("rightArrowEnable")
       .addClass("rightArrowDisable")
       .css({ "pointer-event": "none", cursor: "default" });
     $("#naviRight span").hide();
-  }
+      $("#naviRight").attr("aria-disabled", "true");
+}
   function fnBegin() {
     console.log("fnbegin");
     $(".beginPage").hide();
