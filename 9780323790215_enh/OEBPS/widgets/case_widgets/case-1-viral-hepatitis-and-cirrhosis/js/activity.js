@@ -238,10 +238,10 @@
     // $('#menu'+currScreenNum).addClass("selectedMenu");
 
     $(".navigation").each(function () {
-      $(this).removeClass("currentSlide");
+      $(this).removeClass("currentSlide").removeAttr("aria-current");
     });
 
-    //$('#navigate'+currScreenNum).addClass('currentSlide');
+    //$('#navigate'+currScreenNum).addClass('currentSlide').attr('aria-current', 'page');
     if ($(".tablepatch").css("display") == "block") {
       resetScrrenObjectsVisibility();
 
@@ -280,6 +280,13 @@
           $("#naviList").hide();
           $("#naviLeft").hide();
           $("#naviRight").hide();
+          set_tabindex();
+          setTimeout(function () {
+            var $firstMenuItem = $(".menupatch .menuList li:visible").first();
+            if ($firstMenuItem.length) {
+              $firstMenuItem.focus();
+            }
+          }, 0);
         },
       });
 
@@ -332,10 +339,10 @@
     // }
 
     $(".navigation").each(function () {
-      $(this).removeClass("currentSlide");
+      $(this).removeClass("currentSlide").removeAttr("aria-current");
     });
 
-    //$('#navigate'+currScreenNum).addClass('currentSlide');
+    //$('#navigate'+currScreenNum).addClass('currentSlide').attr('aria-current', 'page');
 
     //$('.tablepatch').hide();
 
@@ -409,13 +416,13 @@
     footerLi += "<ul>";
     for (var i = 0; i < nCount; i++) {
       footerLi +=
-        '<li><span id="navigate' + i + '" class="navigation"></span></li>';
+        '<li><button type=\"button\" id=\"navigate' + i + '\" class=\"navigation\" title=\"Page ' + (i + 1) + '\" aria-label=\"Page ' + (i + 1) + '\"></button></li>';
     }
     footerLi += "</ul>";
     $("#naviList").append(footerLi);
 
     $("#navigate0").css({ background: "#015453 no-repeat" });
-    $("#navigate0").addClass("currentSlide");
+    $("#navigate0").addClass("currentSlide").attr("aria-current", "page");
     aSlidesArray[nSlideCounter].css({
       display: "block",
       "z-index": "2",
@@ -424,11 +431,11 @@
   }
 
   function fnCheckNextBack(nSlideCounter) {
-    $(".navigation").removeClass("currentSlide");
+    $(".navigation").removeClass("currentSlide").removeAttr("aria-current");
 
     $(".menuList li").removeClass("selectedMenu");
 
-    $("#navigate" + nSlideCounter).addClass("currentSlide");
+    $("#navigate" + nSlideCounter).addClass("currentSlide").attr("aria-current", "page");
 
     // hide answer div
     $(".AnswerDiv > span").empty().text("Show answer");

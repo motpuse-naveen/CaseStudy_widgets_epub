@@ -444,6 +444,11 @@ img {
 }
 
 .navigation {
+  border: none;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+
   background: #fff none repeat scroll 0 0;
   border-radius: 3px;
   cursor: pointer;
