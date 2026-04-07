@@ -878,9 +878,9 @@ h1.mainTitle{
   width: 20px;
 }
 .texting {
-  float: left;
+  /*float: left;*/
   font-family: "SourceSansPro-Bold";
-  padding-left: 10px;
+  padding-left: 28px;
   width: 335px;
 }
 

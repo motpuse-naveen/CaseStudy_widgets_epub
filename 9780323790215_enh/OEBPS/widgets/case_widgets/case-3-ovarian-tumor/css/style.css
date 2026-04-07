@@ -435,7 +435,7 @@ img {
   position: relative;
   text-align: center;
   top: -55px;
-  width: 101%;
+  width: 100%;
   z-index: 10;
 }
 
@@ -845,10 +845,10 @@ h1.mainTitle{
   width: 20px;
 }
 .texting {
-  float: left;
+  /*float: left;*/
   font-family: "SourceSansPro-Bold";
-  padding-left: 10px;
-  width: 364px;
+  padding-left: 28px;
+  width: 335px;
 }
 
 .menupatch {
@@ -1426,7 +1426,7 @@ tr > td:first-child {
     position: relative;
     text-align: center;
     top: -51px;
-    width: 103.8%;
+    /*width: 103.8%;*/
 }
 
 

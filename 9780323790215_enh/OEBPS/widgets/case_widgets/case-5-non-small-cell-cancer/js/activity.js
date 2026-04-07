@@ -20,6 +20,7 @@
     $(".imagePopup").bind("click", showImagePopup);
     $(".textPopup").bind("click", showTextPopup);
     $(".closeimgpopup").bind("click", hideImagePopup);
+    $(".popupimage").attr("aria-hidden", "true").find(".closeimgpopup").attr("tabindex", "-1");
     $(".closetextpopup").bind("click", hideTextPopup);
     $(".closetextpopup1").bind("click", hideTextPopup);
     $(".closetextpopup2").bind("click", hideTextPopup);
@@ -69,7 +70,8 @@
       $overlay.show();
     }
     var $popup = $("#" + popupId);
-    $popup.show();
+    $popup.show().attr("aria-hidden", "false");
+    $popup.find(".closeimgpopup").removeAttr("tabindex");
     if (
       window.CaseWidgetImageModal &&
       window.CaseWidgetImageModal.afterImagePopupShown

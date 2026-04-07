@@ -407,7 +407,7 @@ img {
   position: relative;
   text-align: center;
   top: -55px;
-  width: 101%;
+  width: 100%;
   z-index: 10;
 }
 
@@ -1398,7 +1398,7 @@ tr > td:first-child {
     position: relative;
     text-align: center;
     top: -51px;
-    width: 103.8%;
+    /*width: 103.8%;*/
 }
 
 

@@ -20,6 +20,11 @@
     $(".imagePopup").bind("click", showImagePopup);
     $(".textPopup").bind("click", showTextPopup);
     $(".closeimgpopup").bind("click", hideImagePopup);
+    $(".popupimage")
+      .attr("aria-hidden", "true")
+      .attr("hidden", "hidden")
+      .find(".closeimgpopup")
+      .attr("tabindex", "-1");
     $(".imagePopupOverlay").bind("click", hideAllImagePopups);
     $(".closetextpopup").bind("click", hideTextPopup);
 
@@ -68,7 +73,8 @@
       $overlay.show();
     }
     var $popup = $("#" + popupId);
-    $popup.show();
+    $popup.show().removeAttr("hidden").attr("aria-hidden", "false");
+    $popup.find(".closeimgpopup").removeAttr("tabindex");
     if (
       window.CaseWidgetImageModal &&
       window.CaseWidgetImageModal.afterImagePopupShown
@@ -91,6 +97,12 @@
     ) {
       window.CaseWidgetImageModal.onImagePopupsHidden(false);
     }
+    $(this)
+      .parent()
+      .attr("aria-hidden", "true")
+      .attr("hidden", "hidden")
+      .find(".closeimgpopup")
+      .attr("tabindex", "-1");
     $(this).parent().hide();
     $(this).closest(".midDiv").find(".imagePopupOverlay").hide();
   }
@@ -102,6 +114,11 @@
     ) {
       window.CaseWidgetImageModal.onImagePopupsHidden(!!skipRestoreFocus);
     }
+    $(".popupimage")
+      .attr("aria-hidden", "true")
+      .attr("hidden", "hidden")
+      .find(".closeimgpopup")
+      .attr("tabindex", "-1");
     $(".popupimage").hide();
     $(".imagePopupOverlay").hide();
     $("#textA12").css("height", "auto");

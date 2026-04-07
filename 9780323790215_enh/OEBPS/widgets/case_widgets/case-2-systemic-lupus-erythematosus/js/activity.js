@@ -20,6 +20,7 @@
 
     $(".imagePopup").bind("click", showImagePopup);
     $(".closeimgpopup").bind("click", hideImagePopup);
+    $(".popupimage").attr("aria-hidden", "true").find(".closeimgpopup").attr("tabindex", "-1");
 
     $(".midDiv").each(function () {
       divArr.push(this);
@@ -66,7 +67,8 @@
       $overlay.show();
     }
     var $popup = $("#" + popupId);
-    $popup.show();
+    $popup.show().attr("aria-hidden", "false");
+    $popup.find(".closeimgpopup").removeAttr("tabindex");
     if (
       window.CaseWidgetImageModal &&
       window.CaseWidgetImageModal.afterImagePopupShown

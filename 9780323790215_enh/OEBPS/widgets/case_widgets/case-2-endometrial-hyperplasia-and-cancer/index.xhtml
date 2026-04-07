@@ -761,9 +761,9 @@
                 <button id="naviLeft" class="leftArrowDisable" type="button" title="Previous button" aria-label="Previous button">
                 <span>Previous button</span>
             </button>
-                <div id="naviList">
+                <nav id="naviList" aria-label="Pagination">
 
-            </div>
+            </nav>
                 <button id="naviRight" class="rightArrowDisable" type="button" title="Next button" aria-label="Next button">
                 <span>Next button</span>
             </button>
@@ -797,9 +797,9 @@
 
         <div class="tablepatch">
             <div class="tableHeader">
-                <h2 class="tableTitle">Normal Reference Range Table</h2>
+                <h2 id="tableTitle" class="tableTitle">Normal Reference Range Table</h2>
                 <span id="tableDropdownLabel" class="tabindex">Select:</span>
-                <div id="tableDropdownID" class="tableDropdownList"></div>
+                <div id="tableDropdownID" class="tableDropdownList" aria-labelledby="tableTitle tableDropdownLabel"></div>
             </div>
 
             <div id="testListId0" class="testContainer nano">

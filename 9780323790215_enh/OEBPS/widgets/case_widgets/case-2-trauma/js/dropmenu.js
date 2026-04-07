@@ -54,7 +54,7 @@ function create_custom_dropdowns() {
         var labelledBy = 'tableDropdownLabel ' + currentId;
         var classes = ($select.attr('class') || '') + ' tabindex';
 
-        $select.after('<div class="dropdown ' + classes + '" role="combobox" aria-expanded="false" aria-controls="' + listId + '" aria-activedescendant="" aria-haspopup="listbox" aria-labelledby="' + labelledBy + '" tabindex="0"><span class="current" id="' + currentId + '"></span><div id="' + listId + '" class="list" role="listbox"><ul></ul></div></div>');
+        $select.after('<div class="dropdown ' + classes + '" role="combobox" aria-expanded="false" aria-controls="' + listId + '" aria-activedescendant="" aria-haspopup="listbox" aria-labelledby="' + labelledBy + '" tabindex="0"><span class="current" id="' + currentId + '"></span><div id="' + listId + '" class="list"><ul role="listbox" aria-labelledby="'+ labelledBy +'"></ul></div></div>');
 
         var $dropdown = $select.next();
         var $options = $select.find('option');

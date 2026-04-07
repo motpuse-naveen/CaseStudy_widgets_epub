@@ -440,7 +440,7 @@ img {
   position: relative;
   text-align: center;
   top: -55px;
-  width: 101%;
+  width: 100%;
   z-index: 10;
 }
 
@@ -1445,7 +1445,7 @@ border: 1px solid black;
     position: relative;
     text-align: center;
     top: -51px;
-    width: 103.8%;
+    /*width: 103.8%;*/
 }
 
 
