@@ -918,6 +918,16 @@ h1.mainTitle{
   position: relative;
 }
 
+.item.checkList:focus-visible{
+  outline:2px solid #d93025;
+  outline-offset:-2px;
+}
+
+.item.checkList:focus-visible{
+  outline:2px solid #d93025;
+  outline-offset:-2px;
+}   
+
 .currentSlide{
 
 }

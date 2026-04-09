@@ -298,11 +298,6 @@ setTimeout(function () {
 			activePopup.removeAttribute("aria-labelledby");
 			activePopup.setAttribute("aria-hidden", "true");
 		}
-		if (activeTrigger) {
-			try {
-				activeTrigger.setAttribute("aria-expanded", "false");
-			} catch (e3) {}
-		}
 		var toFocus = activeTrigger;
 		activePopup = null;
 		activeTrigger = null;
@@ -326,11 +321,6 @@ setTimeout(function () {
 			popup.setAttribute("aria-modal", "true");
 			popup.setAttribute("aria-label", title);
 			popup.removeAttribute("aria-hidden");
-			if (trig) {
-				try {
-					trig.setAttribute("aria-expanded", "true");
-				} catch (e5) {}
-			}
 			if (activeOverlay) {
 				activeOverlay.setAttribute("aria-hidden", "true");
 			}

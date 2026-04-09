@@ -62,89 +62,101 @@
 
     // ####### Amol ######################
 
-    function fnClickRadioBox(ev) {
 
-
-        if (ev.type == "keyup" && ev.keyCode != 13) {
-            console.log(ev.keyCode)
-            return true;
-        }
-
-
-        var currId = $(this).children().attr('data-id');
-        var parentId = $(this).parents('.midDiv').attr('id');
-        var $graph = $(this).closest('.imageBoxHolder').find('.graphContainer').first();
-        if (!$graph.length && parentId) {
-            $graph = $('#' + parentId).find('.graphContainer').first();
-        }
-
-        var currentCheckbox = $(this).find(".rb");
-
-        $(".rb:visible").each(function (index) {
-            loopCheckbox = $(this);
-            console.log("Match>>>", $(currentCheckbox).parent().text(), "With>>>", $(loopCheckbox).parent().text())
-            if ($(currentCheckbox).parent().text() != $(loopCheckbox).parent().text()) {
-                // $('#' + parentId + ' .graph_'+(index+1)).css('display','none');
-                if ($(this).attr('data-id') != currId) {
-                    console.log('true');
-                    $(this).parents().removeClass('selectedRadioBtn');
-                    $(this).removeClass("clicked");
-                }
-            }
-        });
-
-        //      $( ".schedules" ).each(function( index ) {
-        // $(this).parents().removeClass('selectedRadioBtn');
-        //      }
-
-
-
-
-        if ($(this).find(".rb").hasClass("clicked")) {
-
-            console.log('hii i m in if');
-
-            $(this).find(".rb").removeClass("clicked");
-            $(this).removeClass('selectedRadioBtn');
-
-            id = $(this).children().attr('data-id');
-            indexId = id.substr(id.indexOf("_") + 1);
-
-            console.log(indexId);
-            if ($graph.length) {
-                $graph.find('img.containerImg').hide();
-                $graph.find('img.containerImg:first').css('display', 'block');
-            } else {
-                $('.imgBlock').hide();
-                $('.imageShow' + indexId).css('display', 'none');
-            }
-        } else {
-
-            console.log('hii i m in else');
-
-            $(this).find(".rb").addClass("clicked");
-            $(this).addClass('selectedRadioBtn');
-
-            id = $(this).children().attr('data-id');
-            indexId = id.substr(id.indexOf("_") + 1);
-
-            console.log(indexId);
-            console.log('#' + parentId);
-            if ($graph.length) {
-                $graph.find('img.containerImg').hide();
-                $graph.find('.imageShow' + indexId).css('display', 'block');
-            } else {
-                $('.imgBlock').hide();
-                $('.imageShow' + indexId).css('display', 'block');
-            }
-        }
-
-
-
-        set_tabindex();
+  function ensureImageChangeLiveRegion() {
+    if ($("#caseWidgetImageLiveRegion").length) {
+      return;
     }
 
+    $("body").append(
+      '<div id="caseWidgetImageLiveRegion" aria-live="polite" aria-atomic="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">' +
+        '</div>',
+    );
+  }
 
+  function announceImageChange(message) {
+    var $live = $("#caseWidgetImageLiveRegion");
+    if (!$live.length) {
+      ensureImageChangeLiveRegion();
+      $live = $("#caseWidgetImageLiveRegion");
+    }
+
+    $live.text("");
+    setTimeout(function () {
+      $live.text(message);
+    }, 50);
+  }
+
+  function getOptionAnnouncementText($item) {
+    var text = $.trim($item.text()).replace(/\s+/g, " ");
+    return text || "option";
+  }
+
+  function fnClickRadioBox(ev) {
+    var key = ev.which || ev.keyCode;
+
+    if (ev.type === "keydown") {
+      if (key === 37 || key === 38 || key === 39 || key === 40) {
+        ev.preventDefault();
+        var $current = $(this);
+        var $group = $current.closest(".rightOptionBox");
+        var $items = $group.find(".item.checkList:visible");
+        if (!$items.length) {
+          return true;
+        }
+
+        var currentIndex = $items.index($current);
+        var nextIndex = currentIndex;
+
+        if (key === 39 || key === 40) {
+          nextIndex = (currentIndex + 1) % $items.length;
+        } else if (key === 37 || key === 38) {
+          nextIndex = (currentIndex - 1 + $items.length) % $items.length;
+        }
+
+        var $next = $items.eq(nextIndex);
+        $next.trigger("click");
+        $next.focus();
+        return false;
+      }
+
+      if (key !== 13 && key !== 32) {
+        return true;
+      }
+      ev.preventDefault();
+    } else if (ev.type === "keyup") {
+      return true;
+    }
+
+    var $item = $(this);
+    var $group = $item.closest(".rightOptionBox");
+    var $groupItems = $group.find(".item.checkList");
+    var $rb = $item.find(".rb");
+
+    if ($item.hasClass("selectedRadioBtn") || $rb.hasClass("clicked")) {
+      $item.removeClass("selectedRadioBtn").attr("aria-checked", "false");
+      $rb.removeClass("clicked");
+      $(".imgBlock").hide();
+      announceImageChange("Image cleared for deselected option: " + getOptionAnnouncementText($item) + ".");
+      set_tabindex();
+      return;
+    }
+
+    var id = $rb.attr("data-id");
+    var indexId = id.substr(id.indexOf("_") + 1);
+
+    $groupItems.removeClass("selectedRadioBtn").attr("aria-checked", "false");
+    $groupItems.find(".rb").removeClass("clicked");
+
+    $item.addClass("selectedRadioBtn").attr("aria-checked", "true");
+    $rb.addClass("clicked");
+
+    $(".imgBlock").hide();
+    $(".imageShow" + indexId).css("display", "block");
+    announceImageChange("Image updated for selected option: " + getOptionAnnouncementText($item) + ".");
+
+    set_tabindex();
+  }
 
     function resetCheckboxes() {
         $(".rb").each(function (index) {
