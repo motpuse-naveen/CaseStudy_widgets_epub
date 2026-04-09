@@ -54,6 +54,7 @@
     setTimeout(function () {
       $(".nano").nanoScroller();
       $(".nano-pane").show();
+      $(".contentHolderMain1.nano-content").removeAttr("tabindex");
     }, 100);
 
     set_tabindex();
@@ -525,6 +526,7 @@
     setTimeout(function () {
       $(".nano").nanoScroller();
       $(".nano-pane").show();
+      $(".contentHolderMain1.nano-content").removeAttr("tabindex");
     }, 100);
 
     resetCheckboxes();
@@ -559,6 +561,7 @@
     setTimeout(function () {
       $(".nano").nanoScroller();
       $(".nano-pane").show();
+      $(".contentHolderMain1.nano-content").removeAttr("tabindex");
     }, 100);
 
     $(".sliderdot").css("left", "0");
@@ -601,6 +604,7 @@
     setTimeout(function () {
       $(".nano").nanoScroller();
       $(".nano-pane").show();
+      $(".contentHolderMain1.nano-content").removeAttr("tabindex");
     }, 100);
 
     $(".navigation").css({ background: "#fff no-repeat" });
@@ -648,6 +652,7 @@
     setTimeout(function () {
       $(".nano").nanoScroller();
       $(".nano-pane").show();
+      $(".contentHolderMain1.nano-content").removeAttr("tabindex");
     }, 100);
 
     resetCheckboxes();
@@ -764,6 +769,7 @@
     return false;
   }
   function set_tabindex() {
+    $(".contentHolderMain1.nano-content").removeAttr("tabindex");
     var tab_index = 1;
     var interactiveSelector =
       '[role="button"], [role="combobox"], [role="option"], .menuList li, .item, .dropdown, .dropdown .option';

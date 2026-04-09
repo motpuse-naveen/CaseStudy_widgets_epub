@@ -72,7 +72,7 @@ select {
     }
 
     .dropdown:focus-visible {
-      outline: 2px solid #000000;
+      outline: 2px solid #d93025;
       outline-offset: 1px;
     }      
       .dropdown:hover {
@@ -204,11 +204,6 @@ select {
          background-color: #015453 !important;
          /*outline: 1px solid;*/
       }
-
-.dropdown .option.activeOption {
-  background: #015453;
-  color: #fff !important;
-}
       
       body {
         -moz-osx-font-smoothing: grayscale;

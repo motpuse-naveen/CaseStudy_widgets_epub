@@ -352,7 +352,7 @@ position: relative; top: 16px; width: 100%; border-bottom: 1px solid #D3D3D3;
 }
 
 .tabindex.ontab:focus {
-  outline:2px solid #ddd;
+  outline:2px solid #d93025;
 }
 
 .checkList:hover{

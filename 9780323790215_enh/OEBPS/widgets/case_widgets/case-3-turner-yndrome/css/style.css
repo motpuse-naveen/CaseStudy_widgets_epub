@@ -782,7 +782,7 @@ table thead tr.titleTest th {
   width: 534px;
 }
 
-.menupatch > ul > li:hover{
+.menupatch > ul > li:hover,.menupatch > ul > li:focus {
   color: #000000;
   background: #86d6d4;
   cursor: pointer;
@@ -1382,9 +1382,8 @@ top: 2px;
 }
 
 
-.tabindex.ontab:focus,
 button:focus-visible{
-  outline:2px solid #000000;
+  outline:2px solid #d93025;
   outline-offset:-2px;
 }
 

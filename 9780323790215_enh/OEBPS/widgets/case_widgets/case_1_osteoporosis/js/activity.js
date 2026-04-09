@@ -41,7 +41,12 @@
 
 
 
-        // working
+        
+    $(".rightOptionBox .item.checkList").attr("tabindex", "0").bind("keydown", fnClickRadioBox);
+    $(".rightOptionBox").attr("role", "radiogroup");
+    $(".rightOptionBox .item.checkList").attr("role", "radio").attr("aria-checked", "false");
+    $(".rightOptionBox .item.checkList.selectedRadioBtn, .rightOptionBox .item.checkList:has(.rb.clicked)").attr("aria-checked", "true");
+// working
         // $('.rb').bind("click keyup",fnClickRadioBox);
 
 
@@ -54,6 +59,7 @@
         setTimeout(function () {
             $(".nano").nanoScroller();
             $(".nano-pane").show();
+            $(".contentHolderMain1.nano-content").removeAttr("tabindex");
         }, 100)
 
         set_tabindex();
@@ -161,7 +167,7 @@
 
     function resetCheckboxes() {
         $(".rb").each(function (index) {
-            $(this).parent().removeClass('selectedRadioBtn');
+            $(this).parent().removeClass('selectedRadioBtn').attr('aria-checked', 'false');
             $(this).removeClass("clicked");
         });
 
@@ -468,6 +474,7 @@
         setTimeout(function () {
             $(".nano").nanoScroller();
             $(".nano-pane").show();
+            $(".contentHolderMain1.nano-content").removeAttr("tabindex");
         }, 100)
 
         resetCheckboxes();
@@ -507,6 +514,7 @@
         setTimeout(function () {
             $(".nano").nanoScroller();
             $(".nano-pane").show();
+            $(".contentHolderMain1.nano-content").removeAttr("tabindex");
         }, 100)
 
 
@@ -554,6 +562,7 @@
         setTimeout(function () {
             $(".nano").nanoScroller();
             $(".nano-pane").show();
+            $(".contentHolderMain1.nano-content").removeAttr("tabindex");
         }, 100)
 
         $(".navigation").css({ background: "#fff no-repeat" });
@@ -605,6 +614,7 @@
 
             $(".nano").nanoScroller();
             $(".nano-pane").show();
+            $(".contentHolderMain1.nano-content").removeAttr("tabindex");
         }, 100)
 
         resetCheckboxes();
@@ -715,6 +725,7 @@
     return false;
   }
   function set_tabindex() {
+    $(".contentHolderMain1.nano-content").removeAttr("tabindex");
         var tab_index = 1;
         var interactiveSelector = '[role="button"], [role="combobox"], [role="option"], .menuList li, .item, .dropdown, .dropdown .option';
         $(".tabindex").each(function (index) {
