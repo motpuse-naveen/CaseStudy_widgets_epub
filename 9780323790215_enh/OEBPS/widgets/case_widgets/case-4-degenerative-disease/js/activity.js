@@ -426,7 +426,7 @@
         '<li><button type=\"button\" id=\"navigate' + i + '\" class=\"navigation\" title=\"Page ' + (i + 1) + '\" aria-label=\"Page ' + (i + 1) + '\"></button></li>';
     }
     footerLi += "</ul>";
-    $("#naviList").append(footerLi);
+    $("#naviRight").before(footerLi);
 
     $("#navigate0").css({ background: "#015453 no-repeat" });
     $("#navigate0").addClass("currentSlide").attr("aria-current", "page");
