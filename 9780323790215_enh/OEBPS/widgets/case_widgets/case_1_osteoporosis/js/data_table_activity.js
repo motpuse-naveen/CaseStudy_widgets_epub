@@ -24,6 +24,25 @@ $(document).ready(function()
     var tableData7 = testCasesdata[0].caseData7; // get case study
     var tableData8 = testCasesdata[0].caseData8; // get case study
     var tableData9 = testCasesdata[0].caseData9; // get case study
+    function buildAccessibleTable(tableData)
+    {
+        var tableRows = '<table class="testsList"><thead>';
+        if (tableData && tableData.length > 0)
+        {
+            tableRows += '<tr><th scope="col"><span>' + tableData[0].col_first + '</span></th><th scope="col"><span>' + tableData[0].col_second + '</span></th><th scope="col"><span>' + tableData[0].col_third + '</span></th></tr>';
+            tableRows += '</thead><tbody>';
+            for (var i = 1; i < tableData.length; i++)
+            {
+                tableRows += '<tr><th scope="row"><span>' + tableData[i].col_first + '</span></th><td><span>' + tableData[i].col_second + '</span></td><td><span>' + tableData[i].col_third + '</span></td></tr>';
+            }
+        }
+        else
+        {
+            tableRows += '<tr><th scope="col"><span></span></th><th scope="col"><span></span></th><th scope="col"><span></span></th></tr></thead><tbody>';
+        }
+        tableRows += '</tbody></table>';
+        return tableRows;
+    }
     // drop down
     dropdownSelect = '<select id="dropdown_1" class="dropdownList noIndx">'
     for (var j = 0; j < quesList[0].quesDropOptions.length; j++)
@@ -33,80 +52,27 @@ $(document).ready(function()
     }
     dropdownSelect = dropdownSelect + dropdownOptions;
     dropdownSelect = dropdownSelect + '</select>';
-    // add DROPDOWN end-------------------------------------------------------------	
-    // 1st row
-    tableRows1 = tableRows1 + '<table class="testsList">';
-    for (var i = 0; i < tableData1.length; i++)
-    {
-        tableRows1 = tableRows1 + "<tr><td><span>" + tableData1[i].col_first + "</span></td><td><span>" + tableData1[i].col_second + "</span></td><td><span>" + tableData1[i].col_third + "</span></td></tr>";
-    }
-    tableRows1 = tableRows1 + '</table>';
+    // add DROPDOWN end-------------------------------------------------------------
+    tableRows1 = buildAccessibleTable(tableData1);
     tableRows1 = tableRows1 + brLine;
-    // 2st row
-    tableRows2 = tableRows2 + '<table class="testsList">';
-    for (var i = 0; i < tableData2.length; i++)
-    {
-        tableRows2 = tableRows2 + "<tr><td><span>" + tableData2[i].col_first + "</span></td><td><span>" + tableData2[i].col_second + "</span></td><td><span>" + tableData2[i].col_third + "</span></td></tr>";
-    }
-    tableRows2 = tableRows2 + '</table>';
+    tableRows2 = buildAccessibleTable(tableData2);
     tableRows2 = tableRows2 + brLine;
-    // 2st row
-    tableRows3 = tableRows3 + '<table class="testsList">';
-    for (var i = 0; i < tableData3.length; i++)
-    {
-        tableRows3 = tableRows3 + "<tr><td><span>" + tableData3[i].col_first + "</span></td><td><span>" + tableData3[i].col_second + "</span></td><td><span>" + tableData3[i].col_third + "</span></td></tr>";
-    }
-    tableRows3 = tableRows3 + '</table>';
+    tableRows3 = buildAccessibleTable(tableData3);
     tableRows3 = tableRows3 + brLine;
-    // 2st row
-    tableRows4 = tableRows4 + '<table class="testsList">';
-    for (var i = 0; i < tableData4.length; i++)
-    {
-        tableRows4 = tableRows4 + "<tr><td><span>" + tableData4[i].col_first + "</span></td><td><span>" + tableData4[i].col_second + "</span></td><td><span>" + tableData4[i].col_third + "</span></td></tr>";
-    }
-    tableRows4 = tableRows4 + '</table>';
+    tableRows4 = buildAccessibleTable(tableData4);
     tableRows4 = tableRows4 + brLine;
-    // 2st row
-    tableRows5 = tableRows5 + '<table class="testsList">';
-    for (var i = 0; i < tableData5.length; i++)
-    {
-        tableRows5 = tableRows5 + "<tr><td><span>" + tableData5[i].col_first + "</span></td><td><span>" + tableData5[i].col_second + "</span></td><td><span>" + tableData5[i].col_third + "</span></td></tr>";
-    }
-    tableRows5 = tableRows5 + '</table>';
+    tableRows5 = buildAccessibleTable(tableData5);
     tableRows5 = tableRows5 + brLine;
-    // 2st row
-    tableRows6 = tableRows6 + '<table class="testsList">';
-    for (var i = 0; i < tableData6.length; i++)
-    {
-        tableRows6 = tableRows6 + "<tr><td><span>" + tableData6[i].col_first + "</span></td><td><span>" + tableData6[i].col_second + "</span></td><td><span>" + tableData6[i].col_third + "</span></td></tr>";
-    }
-    tableRows6 = tableRows6 + '</table>';
+    tableRows6 = buildAccessibleTable(tableData6);
     tableRows6 = tableRows6 + brLine;
-    // 2st row
-    tableRows7 = tableRows7 + '<table class="testsList">';
-    for (var i = 0; i < tableData7.length; i++)
-    {
-        tableRows7 = tableRows7 + "<tr><td><span>" + tableData7[i].col_first + "</span></td><td><span>" + tableData7[i].col_second + "</span></td><td><span>" + tableData7[i].col_third + "</span></td></tr>";
-    }
-    tableRows7 = tableRows7 + '</table>';
+    tableRows7 = buildAccessibleTable(tableData7);
     tableRows7 = tableRows7 + brLine;
-    // 2st row
-    tableRows8 = tableRows8 + '<table class="testsList">';
-    for (var i = 0; i < tableData8.length; i++)
-    {
-        tableRows8 = tableRows8 + "<tr><td><span>" + tableData8[i].col_first + "</span></td><td><span>" + tableData8[i].col_second + "</span></td><td><span>" + tableData8[i].col_third + "</span></td></tr>";
-    }
-    tableRows8 = tableRows8 + '</table>';
+    tableRows8 = buildAccessibleTable(tableData8);
     tableRows8 = tableRows8 + brLine;
-    // 2st row
-    tableRows9 = tableRows9 + '<table class="testsList">';
-    for (var i = 0; i < tableData9.length; i++)
-    {
-        tableRows9 = tableRows9 + "<tr><td><span>" + tableData9[i].col_first + "</span></td><td><span>" + tableData9[i].col_second + "</span></td><td><span>" + tableData9[i].col_third + "</span></td></tr>";
-    }
-    tableRows9 = tableRows9 + '</table>';
+    tableRows9 = buildAccessibleTable(tableData9);
     tableRows9 = tableRows9 + brLine;
     $('#tableDropdownID').append(dropdownSelect);
+
     $("#addTable0").append(tableRows1);
     $("#addTable0").removeAttr("tabindex");
     $("#addTable1").append(tableRows2);
@@ -168,8 +134,8 @@ $(document).ready(function()
                 $(this).parent().addClass("emptyLine");
             }
         });
-        $('#addTable' + i + ' tr:first-child').addClass("titleTest");
-        $('#addTable' + i + ' tr:first-child').removeClass("emptyLine");
+        $('#addTable' + i + ' thead tr:first-child').addClass("titleTest");
+        $('#addTable' + i + ' thead tr:first-child').removeClass("emptyLine");
     }
     $('.testsList span').each(function()
     {
