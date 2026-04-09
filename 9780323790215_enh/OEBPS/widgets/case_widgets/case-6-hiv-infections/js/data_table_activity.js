@@ -108,6 +108,7 @@ $(document).ready(function()
     tableRows9 = tableRows9 + brLine;
     $('#tableDropdownID').append(dropdownSelect);
     $("#addTable0").append(tableRows1);
+    $("#addTable0").removeAttr("tabindex");
     $("#addTable1").append(tableRows2);
     $("#addTable2").append(tableRows3);
     $("#addTable3").append(tableRows4);
