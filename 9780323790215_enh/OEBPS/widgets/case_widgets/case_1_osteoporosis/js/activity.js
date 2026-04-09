@@ -34,6 +34,7 @@
         // menu/reference controls are semantic buttons; click covers keyboard activation
         $("#menuBtn").bind("click", menuBtnFn);
         $("#tableBtn").bind("click", tableBtnFn);
+    $(document).bind("keydown", fnHandleEscapePanels);
 
 
         $('.item').bind("click keyup", fnClickRadioBox);
@@ -674,7 +675,46 @@
     }
 
 
-    function set_tabindex() {
+  
+
+  function fnHandleEscapePanels(ev) {
+    var key = ev.which || ev.keyCode;
+    if (key !== 27) {
+      return true;
+    }
+
+    var isMenuOpen = $(".menupatch:visible").length > 0;
+    var isTableOpen = $(".tablepatch:visible").length > 0;
+
+    if (!isMenuOpen && !isTableOpen) {
+      return true;
+    }
+
+    ev.preventDefault();
+
+    if (isMenuOpen) {
+      $("#menuBtn").focus();
+    } else if (isTableOpen) {
+      $("#tableBtn").focus();
+    }
+
+    $(".menupatch").hide();
+    $(".tablepatch").hide();
+    $("#menuBtn").removeClass("menuBtnSelected");
+    $("#tableBtn").removeClass("tableBtnSelected");
+
+    $("#naviList").show();
+    $("#naviLeft").show();
+    $("#naviRight").show();
+
+    if ($(".midDiv:visible").length === 0 && typeof nSlideCounter !== "undefined") {
+      $("#midDiv" + nSlideCounter).show();
+    }
+
+    set_tabindex();
+    return false;
+  }
+  function set_tabindex() {
         var tab_index = 1;
         var interactiveSelector = '[role="button"], [role="combobox"], [role="option"], .menuList li, .item, .dropdown, .dropdown .option';
         $(".tabindex").each(function (index) {

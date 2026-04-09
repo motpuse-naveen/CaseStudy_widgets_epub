@@ -1,6 +1,6 @@
 function closeDropdown($dropdown, focusTrigger) {
     $dropdown.removeClass('open').attr('aria-expanded', 'false');
-    $dropdown.find('.option').removeClass('activeOption');
+    $dropdown.find('.option').removeClass('activeOption').attr('tabindex', '-1');
     if (focusTrigger === true) {
         $dropdown.focus();
     }
@@ -13,16 +13,24 @@ function openDropdown($dropdown) {
     $dropdown.addClass('open').attr('aria-expanded', 'true');
     var $selected = $dropdown.find('.option.selected').first();
     if ($selected.length > 0) {
-        $dropdown.find('.option').removeClass('activeOption');
+        $dropdown.find('.option').removeClass('activeOption').attr('tabindex', '-1');
         $selected.addClass('activeOption');
         $dropdown.attr('aria-activedescendant', $selected.attr('id'));
+    }
+
+    var $active = getActiveOption($dropdown);
+    $dropdown.find('.option').attr('tabindex', '-1').removeClass('activeOption');
+    if ($active.length > 0) {
+        $active.addClass('activeOption').attr('tabindex', '0');
+        $active.focus();
+        $dropdown.attr('aria-activedescendant', $active.attr('id'));
     }
 }
 
 function selectOption($option) {
     var $dropdown = $option.closest('.dropdown');
-    $dropdown.find('.option.selected').removeClass('selected').attr('aria-selected', 'false');
-    $option.addClass('selected').attr('aria-selected', 'true');
+    $dropdown.find('.option.selected').removeClass('selected').attr('aria-selected', 'false').attr('tabindex', '-1');
+    $option.addClass('selected').attr('aria-selected', 'true').attr('tabindex', '0');
     var text = $option.data('display-text') || $option.text();
     $dropdown.find('.current').text(text);
     $dropdown.attr('aria-activedescendant', $option.attr('id'));
@@ -70,7 +78,7 @@ function create_custom_dropdowns() {
             var optionId = listId + '_option_' + j;
             var display = $o.data('display-text') || '';
             var isSelected = $o.is(':selected');
-            $dropdown.find('ul').append('<li id="' + optionId + '" class="option ' + (isSelected ? 'selected' : '') + '" role="option" aria-selected="' + (isSelected ? 'true' : 'false') + '" data-value="' + $o.val() + '" data-display-text="' + display + '">' + $o.text() + '</li>');
+            $dropdown.find('ul').append('<li id="' + optionId + '" class="option ' + (isSelected ? 'selected' : '') + '" role="option" tabindex="-1" aria-selected="' + (isSelected ? 'true' : 'false') + '" data-value="' + $o.val() + '" data-display-text="' + display + '">' + $o.text() + '</li>');
         });
 
         var $selectedOption = $dropdown.find('.option.selected').first();
@@ -140,9 +148,10 @@ $(document).on('keydown', '.dropdown', function(event) {
         var nextIndex = keyCode === 40 ? Math.min(activeIndex + 1, $options.length - 1) : Math.max(activeIndex - 1, 0);
         var $next = $options.eq(nextIndex);
 
-        $options.removeClass('activeOption');
-        $next.addClass('activeOption');
+        $options.removeClass('activeOption').attr('tabindex', '-1');
+        $next.addClass('activeOption').attr('tabindex', '0');
         $dropdown.attr('aria-activedescendant', $next.attr('id'));
+        $next.focus();
         return false;
     }
 
@@ -155,6 +164,55 @@ $(document).on('keydown', '.dropdown', function(event) {
     }
 
     if (keyCode === 9 && isOpen) {
+        closeDropdown($dropdown, false);
+    }
+
+    return true;
+});
+
+$(document).on('keydown', '.dropdown .option', function(event) {
+    var keyCode = event.keyCode;
+    var $option = $(this);
+    var $dropdown = $option.closest('.dropdown');
+    var $options = $dropdown.find('.option:visible');
+    var idx = $options.index($option);
+
+    if (keyCode === 40 || keyCode === 38) {
+        event.preventDefault();
+        var nextIndex = keyCode === 40 ? Math.min(idx + 1, $options.length - 1) : Math.max(idx - 1, 0);
+        var $next = $options.eq(nextIndex);
+        $options.removeClass('activeOption').attr('tabindex', '-1');
+        $next.addClass('activeOption').attr('tabindex', '0');
+        $dropdown.attr('aria-activedescendant', $next.attr('id'));
+        $next.focus();
+        return false;
+    }
+
+    if (keyCode === 13 || keyCode === 32) {
+        event.preventDefault();
+        selectOption($option);
+        closeDropdown($dropdown, true);
+        return false;
+    }
+
+    if (keyCode === 27) {
+        event.preventDefault();
+        closeDropdown($dropdown, true);
+        return false;
+    }
+
+    if (keyCode === 9) {
+        var dir = event.shiftKey ? -1 : 1;
+        var nextIndex = idx + dir;
+        if (nextIndex >= 0 && nextIndex < $options.length) {
+            event.preventDefault();
+            var $next = $options.eq(nextIndex);
+            $options.attr('tabindex', '-1').removeClass('activeOption');
+            $next.attr('tabindex', '0').addClass('activeOption');
+            $dropdown.attr('aria-activedescendant', $next.attr('id'));
+            $next.focus();
+            return false;
+        }
         closeDropdown($dropdown, false);
     }
 
