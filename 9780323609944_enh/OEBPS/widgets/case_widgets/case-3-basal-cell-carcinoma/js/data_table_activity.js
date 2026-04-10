@@ -18,6 +18,16 @@ var dropdownSelect = '';
 
 var brLine = '<br/><br/><br/><div id="scroller"></div>'
 
+function escapeXmlValue(value){
+	return String(value == null ? '' : value)
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/\"/g, '&quot;')
+		.replace(/'/g, '&#39;');
+}
+
+
 var quesList = testCasesdata[0].quesRow;  // get dropdown list
 
 var tableData1 = testCasesdata[0].caseData1;  // get case study
@@ -37,8 +47,8 @@ var tableData9 = testCasesdata[0].caseData9;  // get case study
 // drop down
 dropdownSelect = '<select id="dropdown_1" class="dropdownList tabindex noIndx">'
 		for(var j=0; j< quesList[0].quesDropOptions.length ;j++){
-				var disabledSel;
-				dropdownOptions += '<option class="tabindex" data-index="'+j+'"'+disabledSel+' value="'+quesList[0].quesDropOptions[j]+'">'+quesList[0].quesDropOptions[j]+'</option>';
+				var disabledSel = "";
+				dropdownOptions += '<option class="tabindex" data-index="'+j+'"'+disabledSel+' value="'+escapeXmlValue(quesList[0].quesDropOptions[j])+'">'+escapeXmlValue(quesList[0].quesDropOptions[j])+'</option>';
 			}
 dropdownSelect = dropdownSelect+dropdownOptions;
 dropdownSelect = dropdownSelect+'</select>';
@@ -53,7 +63,7 @@ console.log('dropdownSelect', dropdownSelect)
 // 1st row
 	tableRows1 = tableRows1+'<table class="testsList">';
 		for(var i=0; i< tableData1.length; i++){
-			tableRows1 = tableRows1+"<tr><td><span>"+tableData1[i].col_first+"</td><td><span>"+tableData1[i].col_second+"</span></td><td><span>"+tableData1[i].col_third+"</span></td></tr>";
+			tableRows1 = tableRows1+"<tr><td><span>"+escapeXmlValue(tableData1[i].col_first)+"</span></td><td><span>"+escapeXmlValue(tableData1[i].col_second)+"</span></td><td><span>"+escapeXmlValue(tableData1[i].col_third)+"</span></td></tr>";
 		}
 	tableRows1 = tableRows1+'</table>';
 	tableRows1 = tableRows1+brLine;
@@ -62,7 +72,7 @@ console.log('dropdownSelect', dropdownSelect)
 // 2st row
 	tableRows2 = tableRows2+'<table class="testsList">';
 		for(var i=0; i< tableData2.length; i++){
-			tableRows2 = tableRows2+"<tr><td><span>"+tableData2[i].col_first+"</td><td><span>"+tableData2[i].col_second+"</span></td><td><span>"+tableData2[i].col_third+"</span></td></tr>";
+			tableRows2 = tableRows2+"<tr><td><span>"+escapeXmlValue(tableData2[i].col_first)+"</span></td><td><span>"+escapeXmlValue(tableData2[i].col_second)+"</span></td><td><span>"+escapeXmlValue(tableData2[i].col_third)+"</span></td></tr>";
 		}
 	tableRows2 = tableRows2+'</table>';
 	tableRows2 = tableRows2+brLine;
@@ -70,7 +80,7 @@ console.log('dropdownSelect', dropdownSelect)
 // 2st row
 	tableRows3 = tableRows3+'<table class="testsList">';
 		for(var i=0; i< tableData3.length; i++){
-			tableRows3 = tableRows3+"<tr><td><span>"+tableData3[i].col_first+"</td><td><span>"+tableData3[i].col_second+"</span></td><td><span>"+tableData3[i].col_third+"</span></td></tr>";
+			tableRows3 = tableRows3+"<tr><td><span>"+escapeXmlValue(tableData3[i].col_first)+"</span></td><td><span>"+escapeXmlValue(tableData3[i].col_second)+"</span></td><td><span>"+escapeXmlValue(tableData3[i].col_third)+"</span></td></tr>";
 		}
 	tableRows3 = tableRows3+'</table>';
 	tableRows3 = tableRows3+brLine;
@@ -78,7 +88,7 @@ console.log('dropdownSelect', dropdownSelect)
 // 2st row
 	tableRows4 = tableRows4+'<table class="testsList">';
 		for(var i=0; i< tableData4.length; i++){
-			tableRows4 = tableRows4+"<tr><td><span>"+tableData4[i].col_first+"</td><td><span>"+tableData4[i].col_second+"</span></td><td><span>"+tableData4[i].col_third+"</span></td></tr>";
+			tableRows4 = tableRows4+"<tr><td><span>"+escapeXmlValue(tableData4[i].col_first)+"</span></td><td><span>"+escapeXmlValue(tableData4[i].col_second)+"</span></td><td><span>"+escapeXmlValue(tableData4[i].col_third)+"</span></td></tr>";
 		}
 	tableRows4 = tableRows4+'</table>';
 	tableRows4 = tableRows4+brLine;
@@ -86,7 +96,7 @@ console.log('dropdownSelect', dropdownSelect)
 // 2st row
 	tableRows5 = tableRows5+'<table class="testsList">';
 		for(var i=0; i< tableData5.length; i++){
-			tableRows5 = tableRows5+"<tr><td><span>"+tableData5[i].col_first+"</td><td><span>"+tableData5[i].col_second+"</span></td><td><span>"+tableData5[i].col_third+"</span></td></tr>";
+			tableRows5 = tableRows5+"<tr><td><span>"+escapeXmlValue(tableData5[i].col_first)+"</span></td><td><span>"+escapeXmlValue(tableData5[i].col_second)+"</span></td><td><span>"+escapeXmlValue(tableData5[i].col_third)+"</span></td></tr>";
 		}
 	tableRows5 = tableRows5+'</table>';
 	tableRows5 = tableRows5+brLine;
@@ -94,7 +104,7 @@ console.log('dropdownSelect', dropdownSelect)
 // 2st row
 	tableRows6 = tableRows6+'<table class="testsList">';
 		for(var i=0; i< tableData6.length; i++){
-			tableRows6 = tableRows6+"<tr><td><span>"+tableData6[i].col_first+"</td><td><span>"+tableData6[i].col_second+"</span></td><td><span>"+tableData6[i].col_third+"</span></td></tr>";
+			tableRows6 = tableRows6+"<tr><td><span>"+escapeXmlValue(tableData6[i].col_first)+"</span></td><td><span>"+escapeXmlValue(tableData6[i].col_second)+"</span></td><td><span>"+escapeXmlValue(tableData6[i].col_third)+"</span></td></tr>";
 		}
 	tableRows6 = tableRows6+'</table>';
 	tableRows6 = tableRows6+brLine;
@@ -103,7 +113,7 @@ console.log('dropdownSelect', dropdownSelect)
 // 2st row
 	tableRows7 = tableRows7+'<table class="testsList">';
 		for(var i=0; i< tableData7.length; i++){
-			tableRows7 = tableRows7+"<tr><td><span>"+tableData7[i].col_first+"</td><td><span>"+tableData7[i].col_second+"</span></td><td><span>"+tableData7[i].col_third+"</span></td></tr>";
+			tableRows7 = tableRows7+"<tr><td><span>"+escapeXmlValue(tableData7[i].col_first)+"</span></td><td><span>"+escapeXmlValue(tableData7[i].col_second)+"</span></td><td><span>"+escapeXmlValue(tableData7[i].col_third)+"</span></td></tr>";
 		}
 	tableRows7 = tableRows7+'</table>';
 	tableRows7 = tableRows7+brLine;
@@ -111,7 +121,7 @@ console.log('dropdownSelect', dropdownSelect)
 	// 2st row
 	tableRows8 = tableRows8+'<table class="testsList">';
 		for(var i=0; i< tableData8.length; i++){
-			tableRows8 = tableRows8+"<tr><td><span>"+tableData8[i].col_first+"</td><td><span>"+tableData8[i].col_second+"</span></td><td><span>"+tableData8[i].col_third+"</span></td></tr>";
+			tableRows8 = tableRows8+"<tr><td><span>"+escapeXmlValue(tableData8[i].col_first)+"</span></td><td><span>"+escapeXmlValue(tableData8[i].col_second)+"</span></td><td><span>"+escapeXmlValue(tableData8[i].col_third)+"</span></td></tr>";
 		}
 	tableRows8 = tableRows8+'</table>';
 	tableRows8 = tableRows8+brLine;
@@ -120,7 +130,7 @@ console.log('dropdownSelect', dropdownSelect)
 	// 2st row
 	tableRows9 = tableRows9+'<table class="testsList">';
 		for(var i=0; i< tableData9.length; i++){
-			tableRows9 = tableRows9+"<tr><td><span>"+tableData9[i].col_first+"</td><td><span>"+tableData9[i].col_second+"</span></td><td><span>"+tableData9[i].col_third+"</span></td></tr>";
+			tableRows9 = tableRows9+"<tr><td><span>"+escapeXmlValue(tableData9[i].col_first)+"</span></td><td><span>"+escapeXmlValue(tableData9[i].col_second)+"</span></td><td><span>"+escapeXmlValue(tableData9[i].col_third)+"</span></td></tr>";
 		}
 	tableRows9 = tableRows9+'</table>';
 	tableRows9 = tableRows9+brLine;

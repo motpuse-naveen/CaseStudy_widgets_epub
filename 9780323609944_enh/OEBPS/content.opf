@@ -4,7 +4,7 @@
 <meta property="schema:accessibilityHazard">none</meta>
 <meta property="schema:accessibilityFeature">highContrast</meta>
 <meta property="schema:accessibilityFeature">ultraHighContrast</meta>
-<meta property="dcterms:conformsTo">EPUB Accessibility 1.1</meta>
+<meta property="dcterms:conformsTo">http://www.idpf.org/epub/a11y/accessibility-20170105.html</meta>
 <meta property="schema:accessibilityFeature">printPageNumbers</meta>
 <meta property="schema:accessibilityFeature">ARIA</meta>
 <meta property="schema:accessibilityFeature">accessibleControls</meta>
@@ -13,7 +13,6 @@
 <meta property="schema:accessibilitySummary">This publication conforms to WCAG 2.2 Level AA.</meta>
 <meta property="a11y:certifiedBy">Benetech</meta>
 <meta property="a11y:certifierCredential">https://bornaccessible.org/certification/gca-credential/</meta>
-<meta property="dcterms:conformsTo" id="conf">EPUB Accessibility 1.1 - WCAG 2.2 Level AA</meta>
 <meta property="schema:accessibilityFeature">index</meta>
 <meta property="schema:accessibilityFeature">longDescription</meta>
 <meta property="schema:accessMode">visual</meta>
