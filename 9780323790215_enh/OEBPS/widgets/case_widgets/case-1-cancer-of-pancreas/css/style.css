@@ -899,7 +899,7 @@ table thead tr.titleTest th {
   float: left;
   font-family: "SourceSansPro-Bold";
   padding-left: 10px;
-  width: 365px;
+  width: 335px;
 }
 
 .menupatch {
@@ -928,22 +928,23 @@ table thead tr.titleTest th {
   width: 534px;
 }
 
-.menupatch > ul > li:hover,.menupatch > ul > li:focus {
-  color: #000000;
-  background: #86d6d4;
+.menupatch > ul > li:hover,
+.menupatch > ul > li:focus,
+.menupatch > ul > li:focus-visible {
+  color: #000000 !important;
+  background: #86d6d4 !important;
   cursor: pointer;
 }
 
-.selectedMenu{
-  background: #015453;
-  color: #fff !important;
-}
-
-.selectedMenu:hover{
+.menupatch > ul > li.selectedMenu,
+.menupatch > ul > li.selectedMenu:hover,
+.menupatch > ul > li.selectedMenu:focus,
+.menupatch > ul > li.selectedMenu:focus-visible {
   background: #015453 !important;
   color: #fff !important;
-  pointer-events:none;
+  cursor: default;
 }
+
 
 .tablepatch {
   background: #ffffff none repeat scroll 0 0;
