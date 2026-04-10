@@ -1,0 +1,67 @@
+var imgPreloadArray = new Array("images/gray_dot_old.png",
+	"images/loading.gif",
+	"images/menu_btn.png",
+	"images/next_btn.png",
+	"images/prev_btn.png",
+	"images/table_btn.png",
+	"images/arrow.png",
+	"images/check_btn.png",
+	"images/checkbox.png",
+	"images/dot.png",	
+	"images/res310.jpg",		
+	"images/res311.jpg",
+	"images/res320.jpg",
+	"images/res330.jpg",
+	"images/res331.jpg",
+	"images/res332.jpg",
+	"images/res340.jpg",
+	"images/res341.jpg",
+	"images/res350.jpg",
+	"images/res351.jpg",
+	"images/res352.jpg",
+	"images/res353.jpg",
+	"images/res360.jpg",
+	"images/res370.jpg",
+	"images/res371.jpg",
+	"images/res380.jpg",
+	"images/res381.jpg",
+	"images/res390.jpg",
+	"images/res3100.jpg",
+	"images/res3110.jpg",
+	"images/res3111.jpg",
+	"images/res3112.jpg",
+	"images/res3120.jpg",
+	"images/res3130.jpg",
+	"images/res3132.jpg",
+	"images/res3140.jpg",
+	"images/flh250.jpg",
+	"images/ped110.jpg",
+	"images/ped120.jpg",
+	"images/ped130.jpg",
+	"images/ped140.jpg",
+	"images/ind360.jpg",
+	"images/flhk1310.jpg",
+	"images/flhk1320.jpg",
+	"images/flhk1330.jpg",
+	"images/flhk1340.jpg",
+	"images/flh1140.jpg",
+	"images/flh1130.jpg",
+	"images/flh1150.jpg",
+	"images/flh1160.jpg",
+	"images/flh1160-1.jpg",
+	"images/flh140.jpg",
+	"images/res3141.jpg",	
+	"images/placeholder.jpg",
+	"images/placeholder.png",
+	"images/gray_dot.png");
+var imagePreCount = 0;
+for(var pId = 0; pId < imgPreloadArray.length; pId++)
+{
+	var img = new Image();
+	img.onload = imagePreloaded;
+	img.src = imgPreloadArray[pId];
+}
+function imagePreloaded()
+{
+	imagePreCount++;
+}

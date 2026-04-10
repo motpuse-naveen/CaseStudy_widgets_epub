@@ -1,0 +1,66 @@
+var imgPreloadArray = new Array("images/gray_dot_old.png",
+	"images/loading.gif",
+	"images/menu_btn.png",
+	"images/next_btn.png",
+	"images/prev_btn.png",
+	"images/table_btn.png",
+	"images/arrow.png",
+	"images/check_btn.png",
+	"images/checkbox.png",
+	"images/dot.png",	
+	"images/Figure 24-3.jpg",
+	"images/end110.jpg",
+	"images/end111.jpg",
+	"images/end112.jpg",
+	"images/end113.jpg",
+	"images/end114.jpg",
+	"images/end120.jpg",
+	"images/end130.jpg",
+	"images/end140.jpg",
+	"images/end141.jpg",
+	"images/end142.jpg",
+	"images/end143.jpg",
+	"images/end144.jpg",
+	"images/end145.jpg",
+	"images/end146.jpg",
+	"images/end150.jpg",
+	"images/end151.jpg",
+	"images/end152.jpg",
+	"images/end153.jpg",
+	"images/end154.jpg",
+	"images/end155.jpg",
+	"images/end156.jpg",
+	"images/end157.jpg",
+	"images/end160.jpg",
+	"images/end161.jpg",
+	"images/end162.jpg",
+	"images/end163.jpg",
+	"images/end164.jpg",
+	"images/end165.jpg",
+	"images/end166.jpg",
+	"images/end170.jpg",
+	"images/end171.jpg",
+	"images/end172.jpg",
+	"images/end173.jpg",
+	"images/end180.jpg",
+	"images/end190.jpg",
+	"images/end191.jpg",
+	"images/end192.jpg",
+	"images/end193.jpg",
+	"images/end194.jpg",
+	"images/end195.jpg",
+	"images/end196.jpg",
+	"images/placeholder.jpg",
+	"images/placeholder.png",
+	"images/gray_dot.png");
+var imagePreCount = 0;
+for(var pId = 0; pId < imgPreloadArray.length; pId++)
+{
+	var img = new Image();
+	img.onload = imagePreloaded;
+	img.src = imgPreloadArray[pId];
+}
+function imagePreloaded()
+{
+	imagePreCount++;
+}

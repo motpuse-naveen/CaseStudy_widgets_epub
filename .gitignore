@@ -5,3 +5,6 @@
 9780323790215_enh/.vscode/settings.json
 .DS_Store
 *.epub
+/9780323609944_enh/OEBPS/images
+*.jpg
+*.png
